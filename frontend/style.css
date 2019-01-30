@@ -1,0 +1,306 @@
+/* CSS Document */
+
+@charset "utf-8";
+/* Global Styles */
+
+html,
+html * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	font-family: arial, sans-serif;
+	font-size: 1vw;
+	background: #2d2d2d;
+}
+
+header {
+  position: fixed;
+  padding: 2em;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background:rgba(0,0,0,0.2);
+  font-family: Impact, Charcoal, sans-serif;
+  font-size:36px;
+  background-image:-moz-linear-gradient( 135deg, rgb(160,55,220) 0%, rgb(83,200,234) 100%);
+  background-image: -webkit-linear-gradient( 135deg, rgb(160,55,220) 0%, rgb(83,200,234) 100%);
+  background-image: -ms-linear-gradient( 135deg, rgb(160,55,220) 0%, rgb(83,200,234) 100%);
+  letter-spacing: 4px;
+}
+
+nav {
+  z-index: 400;
+  top: 0;
+  left: 0;
+  opacity: .9;
+  position: relative;
+  display: block !important;
+  float: right;
+  width: 33%;
+  padding: 40px 40px 0px 0px;
+  height: 40px;
+}
+nav ul li {
+	float: left;
+	color: #FFFFFF;
+	font-size: 20px;
+	text-align: center;
+	margin-right: 25px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	transition: all 0.3s linear;
+}
+ul li a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+ul li:hover a {
+	color: #071A1F;
+}
+
+.home_header {
+	color: #FFFFFF;
+	text-align: center;
+	margin-top: 150px;
+	margin-right: 100px;
+	margin-bottom: 0px;
+	margin-left: 100px;
+	letter-spacing: 4px;
+}
+
+/* Home Section */
+.home {
+  position: relative;
+  color: #343144;
+  background: #fff;
+  height: 250px;
+  padding: 5em 5em 5em;
+  background-color: #2d2d2d;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.beat {
+	font-weight: lighter;
+	color: #DE0A0A;
+}
+
+.tagline {
+	text-align: center;
+	color: #FFFFFF;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+/* Control Bar Section */
+
+div.control_bar{
+	font-family: Impact, Charcoal, sans-serif;
+	height: 24px;
+	text-align: center;
+	margin-left: 10px;
+	margin-top: 1px;
+	margin-bottom: 10px;
+	background-color: ＃6d6d6d;
+	float: left;
+}
+
+/* Play Button */
+.control_bar .play_button{
+	width: 100px;
+	height: 100px;
+	background-color: #fff;
+	border: 3px solid #EDEDED;
+	margin-left: 20px;
+	margin-top: 20px;
+	margin-bottom: 0px;
+	cursor: pointer;
+	float: left;
+}
+
+/* Dropdown Button */
+.control_bar .bpm_button{
+	border: 3px solid #686868;
+	width: 50%;
+	height: 30px;
+	background-color: #686868;
+	margin-left: 90px;
+	margin-top: -30px;
+	margin-bottom: 20px;
+}
+
+.bpm_button {
+	width: 30%;
+	height: 30px;
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+	float: leftl
+}
+
+/* Dropdown button on hover & focus */
+.bpm_button:hover, .bpm_button:focus {
+  background-color: #2980B9;
+	color: white;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #CECECE;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: snow;
+}
+
+/* Show the dropdown menu 
+(use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+/* Table Section */
+div.darkTable {
+  font-family: Impact, Charcoal, sans-serif;
+  background-color: #686868;
+  width: 95%;
+  height: 100px;
+  text-align: center;
+  border-collapse: separate;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.divTable.darkTable .divTableHead {
+  border: 10px solid #2D2D2D;
+  padding: 5px 5px;
+}
+.divTable.darkTable .divTableBody .divTableCell{
+  font-size: 14px;
+  color: #FAFAFA;
+  border: 10px solid #2D2D2D;
+  padding: 2px 2px;
+}
+.divTable.darkTable .divTableBody .divTableCell1{
+  font-size: 14px;
+  color: #FAFAFA;
+  border: 4px solid #2D2D2D;
+  padding: 2px 2px;
+}
+.divTable.darkTable .divTableBody .divTableCell2{
+  font-size: 14px;
+  color: #FAFAFA;
+  border: 4px solid #2D2D2D;
+  padding: 2px 2px;
+}
+.divTable.darkTable .divTableBody .divTableCell3 {
+  font-size: 14px;
+  color: #FAFAFA;
+  border: 4px solid #2D2D2D;
+  padding: 2px 2px;
+}
+
+.divTable.darkTable .divTableBody .divTableCell1:hover {
+  font-size: 14px;
+  padding: 2px 2px;
+  color: #FAFAFA;
+  background-color: aqua;
+  cursor: pointer;
+}
+
+.divTable.darkTable .divTableBody .divTableCell2:hover {
+  font-size: 14px;
+  color: #FAFAFA;
+  background-color: violet;
+  cursor: pointer;
+}
+
+.divTable.darkTable .divTableBody .divTableCell3:hover {
+  font-size: 14px;
+  color: #FAFAFA;
+  background-color: darkseagreen;
+  cursor: pointer;
+}
+
+.darkTable .tableFootStyle {
+  font-size: 12px;
+  color: #E6E6E6;
+  background: #2D2D2D;
+  border-top: 3px solid #4A4A4A;
+}
+
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableCell, .divTableCell1, .divTableCell2, .divTableCell3, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
+
+/* About Section */
+.about {
+  margin-top: 0em;
+  padding: 8em 0 2em;
+  height: 30vw;
+  background-image:-moz-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
+  background-image: -webkit-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
+  background-image: -ms-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size:36px;
+}
+
+/* Contact Section */
+.contact {
+  margin-top: 0em;
+  padding: 8.75em 0 2em;
+  height: 30vw;
+  background-image:-moz-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
+  background-image: -webkit-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
+  background-image: -ms-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
+  top: 0;
+  left: 0;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size:36px;
+}
+ /* Footer Section*/
+footer {
+  margin-top: -0em;
+  padding: 8.75em 0 2em;
+  height: 5vw;
+  background-image:-moz-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
+  background-image: -webkit-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
+  background-image: -ms-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
+}

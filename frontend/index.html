@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Astro: Drum Beat Generation with ML</title>
+<link  href="style.css" rel="stylesheet" type="text/css">
+	</head>
+
+<body>
+	
+	<!-- Header -->
+	<header>
+		Astro: Drum Beat Generation
+		<nav>       
+			<ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li> <a href="#contact">CONTACT</a></li>
+      </ul>	</nav>
+	</header>
+	
+
+		  <!-- Home Section -->
+  <section class="home" id="home">
+    <h2 class="home_header">Beat <span class="beat"> Maker</span></h2>
+    <p class="tagline">Making New Drum Beats with Generative Model</p>
+  </section>
+	
+	
+	<!-- Control Bar Section -->
+	<script src="javascript.js"></script>
+	<div class = "control_bar">
+		<button type="play_button" class="fa fa-caret-right" id="play_button"> PLAY </button>
+		<div class="bpm_button" id="bpm_button"> BPM: </div>
+		<div class="bpm_dropdown">
+  <button onclick="myFunction()" class="bpm_button">select <i class="fa fa-caret-down"></i> </button>
+  <div id="bpm_dropdown_content" class="dropdown-content">
+    <a>95 BPM</a>
+    <a>100 BPM</a>
+    <a>120 BPM</a>
+	<a>130 BPM</a>
+    <a>140 BPM</a>
+    <a>160 BPM</a>
+	 <a>170 BPM</a>
+  </div>
+</div>
+	</div>
+	
+	<!-- Table Section -->
+			<div class="divTable darkTable">
+<div class="divTableBody">
+<div class="divTableRow">
+<div class="divTableCell1">KICK</div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	<div class="divTableCell1"></div>
+	</div>
+<div class="divTableRow">
+<div class="divTableCell2">HIHAT</div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	<div class="divTableCell2"></div>
+	</div>
+<div class="divTableRow">
+<div class="divTableCell3">SNARE</div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	<div class="divTableCell3"></div>
+	</div>
+</div>
+<div class="divTableFoot tableFootStyle">
+<div class="divTableRow">
+<div class="divTableCell"></div>
+<div class="divTableCell">01</div>
+<div class="divTableCell">02</div>
+<div class="divTableCell">03</div>
+<div class="divTableCell">04</div>
+<div class="divTableCell">05</div>
+<div class="divTableCell">06</div>
+<div class="divTableCell">07</div>
+<div class="divTableCell">08</div>
+<div class="divTableCell">09</div>
+<div class="divTableCell">10</div>
+<div class="divTableCell">11</div>
+<div class="divTableCell">12</div>
+<div class="divTableCell">13</div>
+<div class="divTableCell">14</div>
+<div class="divTableCell">15</div>
+<div class="divTableCell">16</div>
+<div class="divTableCell">17</div>
+<div class="divTableCell">18</div>
+<div class="divTableCell">19</div>
+<div class="divTableCell">20</div>
+<div class="divTableCell">21</div>
+<div class="divTableCell">22</div>
+<div class="divTableCell">23</div>
+<div class="divTableCell">24</div>
+<div class="divTableCell">25</div>
+<div class="divTableCell">26</div>
+<div class="divTableCell">27</div>
+<div class="divTableCell">28</div>
+<div class="divTableCell">29</div>
+<div class="divTableCell">30</div>
+<div class="divTableCell">31</div>
+<div class="divTableCell">32</div>
+</div>
+</div>
+</div>
+
+<section class="about" id="about"> About	</section>
+<section class="contact" id="contact"> Contact Us</section>
+	
+	<footer>	</footer>
+</body>
+</html>
+
+
