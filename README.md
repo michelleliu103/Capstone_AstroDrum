@@ -1,7 +1,4 @@
 # w210-capstone-astrodrum
-
-## WAV Basics
-
 #### WAV Basics 1
 This covers reading in, playing and visualizing a .wav file
 
