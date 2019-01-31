@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 def findZeroCrossings(wav, stereo=False):
 	"""
@@ -56,6 +57,40 @@ def splice(wav, ms, stereo=False):
 	split2 = wav[1][zeros[closestZero]+1:]
 
 	return split1,split2
+
+def randFiles(path,N=2):
+	"""
+
+	give a path choose N files randomly from that path
+
+	path - path to files
+	N - number of files to choose uniformly, randomly
+
+	returns N files
+
+	"""
+
+	files = np.random.choice(os.listdir(path),size=N)
+
+	return files
+
+def melt(wav1, wav2):
+	"""
+
+	merge wav1 and wav2 into a single wav where wav2 starts
+	immediately after wav1
+
+	wav1 - wav as array
+	wav2 - wav as array
+
+	return merged arrays
+
+	"""
+
+	newWave = np.concatenate((wav1,wav2))
+
+	return newWave
+
 
 
 
