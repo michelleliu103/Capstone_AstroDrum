@@ -1,6 +1,13 @@
 console.clear();
-
+const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
+
+// script for BPM dropd own menu
+var select = document.getElementById('bpmchoice');
+var input = document.getElementById('bpmchosen');
+select.onchange = function() {
+    input.value = select.value;
+};
 
 //switch aria attribute on click
 const pads = document.querySelectorAll('.pads');
@@ -16,14 +23,48 @@ allPadButtons.forEach(el => {
   }, false)
 })
 
+// script for play/pause audio
+/*	
+var myAudio = document.getElementById("myAudio");
+var playButton = document.getElementById("play_button");
+var pauseButton = document.getElementById("stop_button");
+
+function togglePlay() {
+	setupSample();
+
+	if (myAudio.paused) {
+	playButton.style.display = 'none';
+	pauseButton.style.display = 'inline-block';
+		return myAudio.play();
+	}
+	else{
+		playButton.style.display = 'inline-block';
+		pauseButton.style.display = 'none';	
+		return myAudio.pause();
+	}
+	
+}
+*/
+
+//script to clear the selected buttons
+function clearButton(){
+    console.log("clear");
+    allPadButtons.forEach(el => {
+        el.setAttribute('aria-checked', 'false');
+    })
+};
+
 // Loading ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // fetch the audio file and decode the data
 async function getFile(audioContext, filepath) {
   const response = await fetch(filepath);
   const arrayBuffer = await response.arrayBuffer();
   const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+  console.log("getFile");
   return audioBuffer;
 }
+
+let playbackRate = 1;
 
 // create a buffer, plop in data, connect and play -> modify graph here if required
 function playSample(audioContext, audioBuffer) {
@@ -36,7 +77,7 @@ function playSample(audioContext, audioBuffer) {
 }
 
 async function setupSample() {
-  const filePath = 'GANKick_1.wav';
+  const filePath = "https://s3.amazonaws.com/astro-drum/GANKick_1.wav" ;
   // Here we're `await`ing the async/promise that is `getFile`.
   // To be able to use this keyword we need to be within an `async` function
   const sample = await getFile(audioCtx, filePath);
@@ -44,26 +85,11 @@ async function setupSample() {
 }
 
 // Scheduling ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-let tempo = 120.0;
-
-// script for BPM dropd own menu
-var select = document.getElementById('bpmchoice');
-var input = document.getElementById('bpmchosen');
-
-select.onchange = function() {
-	//document.getElementById("myAudio").playbackRate = document.querySelector('#bpmchosen').value/60;
-    input.value = select.value;
-	tempo = select.value;
-	console.log("tempo now is " + tempo)
-};
-
-//script to clear the selected buttons
-function clearButton(){
-    console.log("clear");
-    allPadButtons.forEach(el => {
-        el.setAttribute('aria-checked', 'false');
-    })
-};
+let tempo = 60.0;
+const bpmControl = document.querySelector('#bpmchosen');
+bpmControl.addEventListener('input', function() {
+    tempo = Number(this.value);
+}, false);
 
 let lookahead = 25.0; // How frequently to call scheduling function (in milliseconds)
 let scheduleAheadTime = 0.1; // How far ahead to schedule audio (sec)
@@ -83,7 +109,6 @@ function nextNote() {
     }
 }
 
-// Create a queue for the notes that are to be played, with the current time that we want them to play:
 const notesInQueue = [];
 
 function scheduleNote(beatNumber, time) {
@@ -92,22 +117,18 @@ function scheduleNote(beatNumber, time) {
     notesInQueue.push({ note: beatNumber, time: time });
 
     if (pads[0].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
-        playSample(audioCtx, dtmf);
+        playSample(audioCtx, sound);
     }
-	/*
     if (pads[1].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
-        playPulse()
+        playSample(audioCtx, sound);
     }
     if (pads[2].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
-        playNoise()
+        playSample(audioCtx, sound);
     }
-    if (pads[3].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
-        playSourceNode(audioCtx, sample);
-    }*/
 }
 
+let timerID;
 function scheduler() {
-	console.log('scheduler');
     // while there are notes that will need to play before the next interval, schedule them and advance the pointer.
     while (nextNoteTime < audioCtx.currentTime + scheduleAheadTime ) {
         scheduleNote(currentNote, nextNoteTime);
@@ -141,12 +162,14 @@ function draw() {
 }
 
 // when the sample has loaded allow play
+//const loadingEl = document.querySelector('.loading');
 const playButton = document.querySelector('[data-playing]');
 let isPlaying = false;
 setupSample()
   .then((sample) => {
+    //loadingEl.style.display = 'none';
 
-    dtmf = sample; // to be used in our playSample function
+    sound = sample; // to be used in our playSample function
 
     playButton.addEventListener('click', ev => {
       isPlaying = !isPlaying;
