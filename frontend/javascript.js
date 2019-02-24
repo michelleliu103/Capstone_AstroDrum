@@ -7,6 +7,7 @@ var select = document.getElementById('bpmchoice');
 var input = document.getElementById('bpmchosen');
 select.onchange = function() {
     input.value = select.value;
+    tempo = select.value;
 };
 
 //switch aria attribute on click
@@ -85,10 +86,12 @@ async function setupSample() {
 }
 
 // Scheduling ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-let tempo = 60.0;
+let tempo = 120.0;
 const bpmControl = document.querySelector('#bpmchosen');
+console.log(bpmControl);
 bpmControl.addEventListener('input', function() {
     tempo = Number(this.value);
+    console.log("tempo is: " + tempo);
 }, false);
 
 let lookahead = 25.0; // How frequently to call scheduling function (in milliseconds)
@@ -104,7 +107,7 @@ function nextNote() {
 
     // Advance the beat number, wrap to zero
     currentNote++;
-    if (currentNote === 4) {
+    if (currentNote === 32) {
             currentNote = 0;
     }
 }
@@ -137,7 +140,7 @@ function scheduler() {
     timerID = window.setTimeout(scheduler, lookahead);
 }
 
-let lastNoteDrawn = 3;
+let lastNoteDrawn = 31;
 
 function draw() {
     let drawNote = lastNoteDrawn;
@@ -151,8 +154,8 @@ function draw() {
     // We only need to draw if the note has moved.
     if (lastNoteDrawn != drawNote) {
         pads.forEach(function(el, i) {
-            el.children[lastNoteDrawn].style.borderColor = 'hsla(0, 0%, 10%, 1)';
-            el.children[drawNote].style.borderColor = 'hsla(49, 99%, 50%, 1)';
+            el.children[lastNoteDrawn].style.borderColor = 'darkgray';
+            el.children[drawNote].style.borderColor = 'lightyellow';
         });
 
         lastNoteDrawn = drawNote;
@@ -164,6 +167,9 @@ function draw() {
 // when the sample has loaded allow play
 //const loadingEl = document.querySelector('.loading');
 const playButton = document.querySelector('[data-playing]');
+var pauseButton = document.getElementById("stop_button");
+
+
 let isPlaying = false;
 setupSample()
   .then((sample) => {
@@ -175,6 +181,9 @@ setupSample()
       isPlaying = !isPlaying;
 
       if (isPlaying) { // start playing
+
+        playButton.style.display = 'none';
+        pauseButton.style.display = 'inline-block';
 
         // check if context is in suspended state (autoplay policy)
         if (audioCtx.state === 'suspended') {
@@ -190,5 +199,13 @@ setupSample()
         window.clearTimeout(timerID);
         ev.target.dataset.playing = 'false';
       }
+    })
+
+    pauseButton.addEventListener('click', ev => {
+        isPlaying = !isPlaying;
+        playButton.style.display = 'inline-block';
+        pauseButton.style.display = 'none';	
+        audioCtx.suspend();
+
     })
   });
