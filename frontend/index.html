@@ -32,10 +32,11 @@
 			<input id="bpmchosen" type="number" name="bpmchosen" step="1" min="60" max="180" value="120" required>
 		</div>
 		<div class="dropdown"> 
-			<select name="bpmchoice" id="bpmchoice">
+			<select name="bpmchoice" id="bpmchoice" style="width:18px">
+				<option selected disabled>Select BPM</option>
 				<option value="95">95 BPM</option>
 				<option value="100">100 BPM</option>
-				<option value="120" selected="selected">120 BPM</option>
+				<option value="120">120 BPM</option>
 				<option value="130">130 BPM</option>
 				<option value="140">140 BPM</option>
 				<option value="160">160 BPM</option>
@@ -55,8 +56,10 @@
       <!-- drum one: kickdrum -->
       <section class="drum-one">
         <div class="name">Hihat</div>
-		  <section class="pads">
-          <button role="switch" aria-checked="false"><span></span></button>
+		  <div class="next"> <i class="fa fa-caret-left"></i></div>
+<div class="next"> <i class="fa fa-caret-right"></i></div>
+	    <section class="pads">
+          <button role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
@@ -94,6 +97,8 @@
       <!-- track two: pad/sweep -->
       <section class="drum-two">
 		  <div class="name">Snare</div>
+		  <div class="next"> <i class="fa fa-caret-left"></i></div>
+<div class="next"> <i class="fa fa-caret-right"></i></div>
         <section class="pads">
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
@@ -133,6 +138,8 @@
       <!-- track three: noise -->
       <section class="drum-three">
         <div class="name">Kickdrum</div>
+		  <div class="next"> <i class="fa fa-caret-left"></i></div>
+<div class="next"> <i class="fa fa-caret-right"></i></div>
 		  <section class="pads">
           <button role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
@@ -172,6 +179,8 @@
 		<!-- Footer -->
       <section class="drum-beats">
         <div id = "beatmarker" class="name"></div>
+		  <div class="next"> </div>
+<div class="next"> </div>
 		  <section class="pads">
 			  <div class="cell">01</div>
 			  <div class="cell">02</div>
