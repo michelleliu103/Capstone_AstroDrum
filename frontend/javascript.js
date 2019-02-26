@@ -2,14 +2,6 @@ console.clear();
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
 
-// script for BPM dropd own menu
-var select = document.getElementById('bpmchoice');
-var input = document.getElementById('bpmchosen');
-select.onchange = function() {
-    input.value = select.value;
-    tempo = select.value;
-};
-
 //switch aria attribute on click
 const pads = document.querySelectorAll('.pads');
 const allPadButtons = document.querySelectorAll('#drums button');
@@ -23,29 +15,6 @@ allPadButtons.forEach(el => {
     }
   }, false)
 })
-
-// script for play/pause audio
-/*	
-var myAudio = document.getElementById("myAudio");
-var playButton = document.getElementById("play_button");
-var pauseButton = document.getElementById("stop_button");
-
-function togglePlay() {
-	setupSample();
-
-	if (myAudio.paused) {
-	playButton.style.display = 'none';
-	pauseButton.style.display = 'inline-block';
-		return myAudio.play();
-	}
-	else{
-		playButton.style.display = 'inline-block';
-		pauseButton.style.display = 'none';	
-		return myAudio.pause();
-	}
-	
-}
-*/
 
 //script to clear the selected buttons
 function clearButton(){
@@ -61,7 +30,6 @@ async function getFile(audioContext, filepath) {
   const response = await fetch(filepath);
   const arrayBuffer = await response.arrayBuffer();
   const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-  console.log("getFile");
   return audioBuffer;
 }
 
@@ -88,12 +56,17 @@ async function setupSample() {
 // Scheduling ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let tempo = 120.0;
 const bpmControl = document.querySelector('#bpmchosen');
-console.log(bpmControl);
 bpmControl.addEventListener('input', function() {
     tempo = Number(this.value);
-    console.log("tempo is: " + tempo);
 }, false);
 
+//BPM dropd own menu	
+var select = document.getElementById('bpmchoice');
+var input = document.getElementById('bpmchosen');
+select.onchange = function() {
+    input.value = select.value;
+    tempo = select.value;
+};
 let lookahead = 25.0; // How frequently to call scheduling function (in milliseconds)
 let scheduleAheadTime = 0.1; // How far ahead to schedule audio (sec)
 
@@ -101,7 +74,7 @@ let currentNote = 0;
 let nextNoteTime = 0.0; // when the next note is due.
 
 function nextNote() {
-    const secondsPerBeat = 60.0 / tempo;
+    const secondsPerBeat = 60.0 / tempo / 4;
 
     nextNoteTime += secondsPerBeat; // Add beat length to last beat time
 
