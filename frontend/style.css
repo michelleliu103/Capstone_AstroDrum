@@ -109,7 +109,7 @@ ul li:hover a {
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-top: 20px;
-	margin-bottom: 0px;
+	margin-bottom: 10px;
 	background-color: #686868;
 	position: relative;
 	padding-top: 10px;
@@ -131,20 +131,33 @@ input[type="number"] {
 }
 
 button{
-	border: 3px solid black;
-	width: 100px;
-	height: 40px;
-	padding: 10px;
+    border: 3px solid black;
+    width: 100px;
+    height: 40px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    background-color: #686868;
+    margin-left: 5px;
+    margin-right: 60px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+
+.onbeat{
 	background-color: #686868;
-	margin-left: 5px;
-	margin-right: 60px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	cursor: pointer;
+	filter: brightness(120%) !important;
 }
 
 button:hover{
-	background-color: #8F8D8D;
+    background-color: #8F8D8D;
+    filter: brightness(85%);
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
 }
 
 /* Dropdown Button */
@@ -195,27 +208,35 @@ padding-right: 0px;
   grid-template-columns: 7% 3% 4% 50%;
   align-items: center;
   padding: 0px;
-  margin: 10px;
+  margin-left: 10px;
+	margin-top: 0px;
 }
 
 .name {
-	font-family: Impact, Charcoal, sans-serif;
-	padding: 5px;
-	margin: 10px;
-	width: 50px;
-	height: 20px;
-	background: #686868;
-	text-align: center;
-	border-radius: 5px;
+    font-family: Impact, Charcoal, sans-serif;
+    padding: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 64px;
+    height: 20px;
+    background: #686868;
+    text-align: center;
+    border-radius: 5px;
 }
 
 .next {
-	font-size: 10px;
-	width: 10px;
-	padding: 5px;
-	background: #686868;
-	text-align: center;
-	border-radius: 4px;
+    font-size: 10px;
+    width: 30px;
+    padding: 0px;
+    background: #686868;
+    text-align: center;
+    margin: 0px;
+    border: none;
+    border-radius: 85px;
+    height: 30px;
+	cursor: pointer;
 }
 
 #beatmarker{
@@ -319,4 +340,6 @@ footer {
   background-image:-moz-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
   background-image: -webkit-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
   background-image: -ms-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
+}
+.nextfooter {
 }

@@ -47,6 +47,7 @@
 	  <button class="button" style="display: none;" id="stop_button"> STOP <i class="fa fa-stop"></i></button>
 	  <button class="button" id="clear_button" onClick="clearButton()"> CLEAR <i class="fa fa-close"></i></button>
 	  <button class="button" id="save_button"> SAVE <i class="fa fa-save"></i></button>
+	  <button class="button" id="share_button"> SHARE <i class="fa fa-share"></i></button>
 		
 	</div>
 
@@ -56,38 +57,37 @@
       <!-- drum one: kickdrum -->
       <section class="drum-one">
         <div class="name">Hihat</div>
-		  <div class="next"> <i class="fa fa-caret-left"></i></div>
-<div class="next"> <i class="fa fa-caret-right"></i></div>
+<button class="next" onClick="changeHihat()" > <i class="fa fa-forward"></i></button>
 	    <section class="pads">
-          <button role="switch" aria-checked="true"><span></span></button>
+          <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="true"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
 		  <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="true"><span></span></button>
+          <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+		  <button role="switch" aria-checked="false"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+          <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
 		  <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
@@ -97,38 +97,37 @@
       <!-- track two: pad/sweep -->
       <section class="drum-two">
 		  <div class="name">Snare</div>
-		  <div class="next"> <i class="fa fa-caret-left"></i></div>
-<div class="next"> <i class="fa fa-caret-right"></i></div>
+<button class="next" onClick="changeSnare()"> <i class="fa fa-forward"></i></button>
         <section class="pads">
+          <button class="onbeat" role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="true"><span></span></button>
-          <button role="switch" aria-checked="true"><span></span></button>
-		  <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="false"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="true"><span></span></button>
-		  <button role="switch" aria-checked="false"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="false"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="false"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="false"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+          <button role="switch" aria-checked="true"><span></span></button>
+          <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
 		  <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
+          <button class="onbeat" role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
 		  <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
+          <button class="onbeat" role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
 		  <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
@@ -138,38 +137,37 @@
       <!-- track three: noise -->
       <section class="drum-three">
         <div class="name">Kickdrum</div>
-		  <div class="next"> <i class="fa fa-caret-left"></i></div>
-<div class="next"> <i class="fa fa-caret-right"></i></div>
+		  <button class="next" onClick="changeKick()"> <i class="fa fa-forward"></i></button>
 		  <section class="pads">
-          <button role="switch" aria-checked="true"><span></span></button>
+          <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="true"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-		  <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="true"><span></span></button>
+		  <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
 		  <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
-          <button role="switch" aria-checked="true"><span></span></button>
+          <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+		  <button role="switch" aria-checked="false"><span></span></button>
+          <button role="switch" aria-checked="false"><span></span></button>
+          <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
 		  <button role="switch" aria-checked="false"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
@@ -179,8 +177,8 @@
 		<!-- Footer -->
       <section class="drum-beats">
         <div id = "beatmarker" class="name"></div>
-		  <div class="next"> </div>
-<div class="next"> </div>
+		  <!-- invisible offset -->
+<div class="nextfooter"> </div>
 		  <section class="pads">
 			  <div class="cell">01</div>
 			  <div class="cell">02</div>

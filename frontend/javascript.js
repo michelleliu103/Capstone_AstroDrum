@@ -27,7 +27,7 @@ function clearButton(){
 // Loading ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // fetch the audio file and decode the data
 async function getFile(audioContext, filepath) {
-  const response = await fetch(filepath);
+  const response = await fetch(filepath, {mode: 'cors'});
   const arrayBuffer = await response.arrayBuffer();
   const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
   return audioBuffer;
@@ -35,7 +35,7 @@ async function getFile(audioContext, filepath) {
 
 let playbackRate = 1;
 
-// create a buffer, plop in data, connect and play -> modify graph here if required
+// create a buffer, plop in data, connect and play 
 function playSample(audioContext, audioBuffer) {
   const sampleSource = audioContext.createBufferSource();
   sampleSource.buffer = audioBuffer;
@@ -45,12 +45,65 @@ function playSample(audioContext, audioBuffer) {
   return sampleSource;
 }
 
+
+let h =0;
+let s = 0;
+let k = 0;
+
+async function changeHihat(){
+	//random # between 1-3
+	//var x = Math.floor((Math.random() * 3) + 1);
+	if (h>1) {h=0;}
+	else{h++;}
+	//const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/VEH_Hihat_${h}.wav` ;
+	const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/train_hihat_${h}.wav` ;
+	console.log(Hihat_filePath);
+	const hihat_sample = await getFile(audioCtx, Hihat_filePath);
+	hihat = hihat_sample;
+}
+
+async function changeSnare(){
+	if (s>1) {s=0;}
+	else{s++;}
+	
+ 	//const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/VEH_Snare_${s}.wav` ;
+	const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/train_snare_${s}.wav` ;
+	console.log(Snare_filePath);
+	const snare_sample = await getFile(audioCtx, Snare_filePath);
+	snare = snare_sample;
+}
+
+async function changeKick(){
+	if (k>1) {k=0;}
+	else{k++;}
+	const Kick_filePath = `https://s3.amazonaws.com/astro-drum/train_hihat_${k}.wav` ;
+
+	console.log(Kick_filePath);
+	const kick_sample = await getFile(audioCtx, Kick_filePath);
+	kick = kick_sample;
+}
+
 async function setupSample() {
-  const filePath = "https://s3.amazonaws.com/astro-drum/GANKick_1.wav" ;
+	
+  //var x = Math.floor((Math.random() * 3) + 1);
+	//console.log(x);
+ // const filePath = `https://s3.amazonaws.com/astro-drum/GANKick_${x}.wav` ;
+ //const Kick_filePath =  "https://s3.amazonaws.com/astro-drum/VEH_Kick_1.wav" ;
+ //const Snare_filePath =  "https://s3.amazonaws.com/astro-drum/VEH_Snare_1.wav" ;
+ //const Hihat_filePath =  "https://s3.amazonaws.com/astro-drum/VEH_Hihat_1.wav" ;
+	const Hihat_filePath = "https://s3.amazonaws.com/astro-drum/train_hihat_0.wav" ;
+	const Snare_filePath =  "https://s3.amazonaws.com/astro-drum/train_snare_0.wav" ;
+	const Kick_filePath =  "https://s3.amazonaws.com/astro-drum/train_kick_0.wav" ;
+	
   // Here we're `await`ing the async/promise that is `getFile`.
   // To be able to use this keyword we need to be within an `async` function
-  const sample = await getFile(audioCtx, filePath);
-  return sample;
+  const kick_sample = await getFile(audioCtx, Kick_filePath);
+	const snare_sample = await getFile(audioCtx, Snare_filePath);
+  const hihat_sample = await getFile(audioCtx, Hihat_filePath);
+	console.log(kick_sample);
+	console.log(snare_sample);
+	console.log(hihat_sample);
+  return [hihat_sample, snare_sample, kick_sample];
 }
 
 // Scheduling ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -93,13 +146,16 @@ function scheduleNote(beatNumber, time) {
     notesInQueue.push({ note: beatNumber, time: time });
 
     if (pads[0].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
-        playSample(audioCtx, sound);
+        playSample(audioCtx, hihat);
+		//console.log("hihat");
     }
     if (pads[1].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
-        playSample(audioCtx, sound);
+        playSample(audioCtx, snare);
+		//console.log("snare");
     }
     if (pads[2].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') {
-        playSample(audioCtx, sound);
+        playSample(audioCtx, kick);
+		//console.log("kick");
     }
 }
 
@@ -142,13 +198,14 @@ function draw() {
 const playButton = document.querySelector('[data-playing]');
 var pauseButton = document.getElementById("stop_button");
 
-
 let isPlaying = false;
 setupSample()
-  .then((sample) => {
+  .then(([hihat_sample, snare_sample, kick_sample]) => {
     //loadingEl.style.display = 'none';
-
-    sound = sample; // to be used in our playSample function
+	
+	snare = snare_sample;
+    kick = kick_sample; // to be used in our playSample function
+	hihat = hihat_sample;
 
     playButton.addEventListener('click', ev => {
       isPlaying = !isPlaying;
@@ -181,4 +238,8 @@ setupSample()
         audioCtx.suspend();
 
     })
-  });
+  }).catch(error => {
+	console.log(error);
+    // Autoplay was prevented.
+    // Show a "Play" button so that user can start playback.
+  });;
