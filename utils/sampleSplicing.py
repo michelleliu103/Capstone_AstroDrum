@@ -69,8 +69,12 @@ def randFiles(path,N=2):
 	returns N files
 
 	"""
-
-	files = np.random.choice(os.listdir(path),size=N)
+	#get all possible files
+	possible = os.listdir(path)
+	#remove any that are hidden files
+	wanted = [f for f in possible if f[0] != '.']
+	#pick two random files
+	files = np.random.choice(wanted,size=N)
 
 	return files
 
