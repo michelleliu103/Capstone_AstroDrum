@@ -306,40 +306,51 @@ padding-right: 0px;
 
 /* About Section */
 .about {
-  margin-top: 0em;
-  padding: 0;
-  height: 30vw;
-  background-image:-moz-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
-  background-image: -webkit-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
-  background-image: -ms-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
-  top: 0;
-  left: 0;
-  width: 100%;
-  font-family: Impact, Charcoal, sans-serif;
-  font-size:36px;
+    margin-top: 0em;
+    padding-top: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    height: 30vw;
+    background-image: -moz-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
+    background-image: -webkit-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
+    background-image: -ms-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 36px;
 }
 
 /* Contact Section */
 .contact {
-  margin-top: 0em;
-  padding: 0;
-  height: 30vw;
-  background-image:-moz-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
-  background-image: -webkit-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
-  background-image: -ms-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
-  top: 0;
-  left: 0;
-  font-family: Impact, Charcoal, sans-serif;
-  font-size:36px;
+    margin-top: 0em;
+    padding-top: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    height: 30vw;
+    background-image: -moz-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
+    background-image: -webkit-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
+    background-image: -ms-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
+    top: 0;
+    left: 0;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 36px;
+    width: 100%;
 }
  /* Footer Section*/
 footer {
-  margin-top: 0em;
-  padding: 0;
-  height: 5vw;
-  background-image:-moz-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
-  background-image: -webkit-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
-  background-image: -ms-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
+    margin-top: 0em;
+    padding-top: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    height: 5vw;
+    background-image: -moz-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
+    background-image: -webkit-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
+    background-image: -ms-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
+    width: 100%;
 }
 .nextfooter {
 }

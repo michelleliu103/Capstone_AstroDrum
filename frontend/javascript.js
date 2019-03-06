@@ -53,30 +53,30 @@ let k = 0;
 async function changeHihat(){
 	//random # between 1-3
 	//var x = Math.floor((Math.random() * 3) + 1);
-	if (h>1) {h=0;}
+	if (h>99) {h=0;}
 	else{h++;}
 	//const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/VEH_Hihat_${h}.wav` ;
-	const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/train_hihat_${h}.wav` ;
+	const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/hihat/gen_hihat_${h}.wav` ;
 	console.log(Hihat_filePath);
 	const hihat_sample = await getFile(audioCtx, Hihat_filePath);
 	hihat = hihat_sample;
 }
 
 async function changeSnare(){
-	if (s>1) {s=0;}
+	if (s>99) {s=0;}
 	else{s++;}
 	
  	//const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/VEH_Snare_${s}.wav` ;
-	const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/train_snare_${s}.wav` ;
+	const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/snare/gen_snare_${s}.wav` ;
 	console.log(Snare_filePath);
 	const snare_sample = await getFile(audioCtx, Snare_filePath);
 	snare = snare_sample;
 }
 
 async function changeKick(){
-	if (k>1) {k=0;}
+	if (k>99) {k=0;}
 	else{k++;}
-	const Kick_filePath = `https://s3.amazonaws.com/astro-drum/train_hihat_${k}.wav` ;
+	const Kick_filePath = `https://s3.amazonaws.com/astro-drum/kick/gen_kick_${k}.wav` ;
 
 	console.log(Kick_filePath);
 	const kick_sample = await getFile(audioCtx, Kick_filePath);
@@ -88,21 +88,14 @@ async function setupSample() {
   //var x = Math.floor((Math.random() * 3) + 1);
 	//console.log(x);
  // const filePath = `https://s3.amazonaws.com/astro-drum/GANKick_${x}.wav` ;
- //const Kick_filePath =  "https://s3.amazonaws.com/astro-drum/VEH_Kick_1.wav" ;
- //const Snare_filePath =  "https://s3.amazonaws.com/astro-drum/VEH_Snare_1.wav" ;
- //const Hihat_filePath =  "https://s3.amazonaws.com/astro-drum/VEH_Hihat_1.wav" ;
-	const Hihat_filePath = "https://s3.amazonaws.com/astro-drum/train_hihat_0.wav" ;
-	const Snare_filePath =  "https://s3.amazonaws.com/astro-drum/train_snare_0.wav" ;
-	const Kick_filePath =  "https://s3.amazonaws.com/astro-drum/train_kick_0.wav" ;
-	
+	const Hihat_filePath = "https://s3.amazonaws.com/astro-drum/hihat/gen_hihat_0.wav" ;
+	const Snare_filePath =  "https://s3.amazonaws.com/astro-drum/snare/gen_snare_0.wav" ;
+	const Kick_filePath =  "https://s3.amazonaws.com/astro-drum/kick/gen_kick_0.wav" ;
   // Here we're `await`ing the async/promise that is `getFile`.
   // To be able to use this keyword we need to be within an `async` function
   const kick_sample = await getFile(audioCtx, Kick_filePath);
 	const snare_sample = await getFile(audioCtx, Snare_filePath);
   const hihat_sample = await getFile(audioCtx, Hihat_filePath);
-	console.log(kick_sample);
-	console.log(snare_sample);
-	console.log(hihat_sample);
   return [hihat_sample, snare_sample, kick_sample];
 }
 
@@ -197,6 +190,49 @@ function draw() {
 //const loadingEl = document.querySelector('.loading');
 const playButton = document.querySelector('[data-playing]');
 var pauseButton = document.getElementById("stop_button");
+
+function saveButton(){
+	arrayOfAudioBuffers = [hihat,snare,kick];
+	mixed = mix(arrayOfAudioBuffers);
+	console.log(arrayOfAudioBuffers);
+	console.log(mixed);
+}
+
+
+function mix(buffers) {
+
+    var nbBuffer = buffers.length;// Get the number of buffer contained in the array buffers
+    var maxChannels = 0;// Get the maximum number of channels accros all buffers
+    var maxDuration = 0;// Get the maximum length
+
+    for (var i = 0; i < nbBuffer; i++) {
+        if (buffers[i].numberOfChannels > maxChannels) {
+            maxChannels = buffers[i].numberOfChannels;
+        }
+        if (buffers[i].duration > maxDuration) {
+            maxDuration = buffers[i].duration;
+        }
+    }
+
+    // Get the output buffer (which is an array of datas) with the right number of channels and size/duration
+    var mixed = audioCtx.createBuffer(maxChannels, audioCtx.sampleRate * maxDuration, audioCtx.sampleRate);        
+
+    for (var j=0; j<nbBuffer; j++){
+
+        // For each channel contained in a buffer...
+        for (var srcChannel = 0; srcChannel < buffers[j].numberOfChannels; srcChannel++) {
+
+            var _out = mixed.getChannelData(srcChannel);// Get the channel we will mix into
+            var _in = buffers[j].getChannelData(srcChannel);// Get the channel we want to mix in
+
+            for (var i = 0; i < _in.length; i++) {
+                _out[i] += _in[i];// Calculate the new value for each index of the buffer array
+            }
+        }
+    }
+
+    return mixed;
+}
 
 let isPlaying = false;
 setupSample()
