@@ -28,6 +28,15 @@
 	
 	<!-- Control Bar Section  -->
 	<div class = "control_bar">
+		
+		<div class="bpm_display" id="pattern_display"> PATTERN:</div>
+		<div class="dropdown"> 
+			<select name="pattern_choice" id="pattern_choice" style="width: 100px; padding: 10px; height: 30px;">
+				<option value="1">Pattern 1</option>
+				<option value="2">Pattern 2</option>
+				<option value="3">Pattern 3</option>
+			</select>
+  			</div>	
 		<div class="bpm_display" id="bpm_display"> BPM:
 			<input id="bpmchosen" type="number" name="bpmchosen" step="1" min="60" max="180" value="120" required>
 		</div>
@@ -46,7 +55,7 @@
 	  <button class="button" data-playing = "false" id="play_button"> PLAY <i class="fa fa-caret-right"></i></button>
 	  <button class="button" style="display: none;" id="stop_button"> STOP <i class="fa fa-stop"></i></button>
 	  <button class="button" id="clear_button" onClick="clearButton()"> CLEAR <i class="fa fa-close"></i></button>
-	  <button class="button" id="save_button"> SAVE <i class="fa fa-save"></i></button>
+	  <button class="button" id="save_button" onClick="saveButton()"> SAVE <i class="fa fa-save"></i></button>
 	  <button class="button" id="share_button"> SHARE <i class="fa fa-share"></i></button>
 		
 	</div>

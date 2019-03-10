@@ -99,6 +99,42 @@ async function setupSample() {
   return [hihat_sample, snare_sample, kick_sample];
 }
 
+
+//preset patterns 
+var pattern_chosen = document.getElementById('pattern_choice');
+pattern_chosen.onchange = function() {
+    pattern = pattern_chosen.value;
+	var patternArray;
+	if (pattern==1) {
+		patternArray = [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,
+						0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
+						1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
+	}
+	else if (pattern==2) {
+		patternArray = [0,0,1,0,0,0,1,0,0,0,1,0,1,1,1,1,0,0,1,0,0,0,1,0,0,0,1,0,1,1,1,0,
+						0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,
+						0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
+	}
+	else{
+		patternArray = [0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,
+						0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,1
+						,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	}
+	arrayToButton(patternArray);
+};
+
+function arrayToButton(inputArray){
+	//inputArray is an array indicating whether a button is turned on or not
+	for(let i = 0; i < inputArray.length; i++) {
+		if (inputArray[i] == 1) {
+				allPadButtons[i].setAttribute('aria-checked', 'true');
+		}
+		else {
+				allPadButtons[i].setAttribute('aria-checked', 'false');
+		}
+	}
+}
+
 // Scheduling ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let tempo = 120.0;
 const bpmControl = document.querySelector('#bpmchosen');
@@ -194,11 +230,12 @@ var pauseButton = document.getElementById("stop_button");
 function saveButton(){
 	arrayOfAudioBuffers = [hihat,snare,kick];
 	mixed = mix(arrayOfAudioBuffers);
-	console.log(arrayOfAudioBuffers);
 	console.log(mixed);
+	
+	
 }
 
-
+/*
 function mix(buffers) {
 
     var nbBuffer = buffers.length;// Get the number of buffer contained in the array buffers
@@ -233,6 +270,7 @@ function mix(buffers) {
 
     return mixed;
 }
+*/
 
 let isPlaying = false;
 setupSample()
@@ -276,6 +314,4 @@ setupSample()
     })
   }).catch(error => {
 	console.log(error);
-    // Autoplay was prevented.
-    // Show a "Play" button so that user can start playback.
   });;
