@@ -90,7 +90,7 @@ async function setupSample() {
  // const filePath = `https://s3.amazonaws.com/astro-drum/GANKick_${x}.wav` ;
 	const Hihat_filePath = "https://s3.amazonaws.com/astro-drum/hihat/gen_hihat_0.wav" ;
 	const Snare_filePath =  "https://s3.amazonaws.com/astro-drum/snare/gen_snare_0.wav" ;
-	const Kick_filePath =  "https://s3.amazonaws.com/astro-drum/kick/gen_kick_0.wav" ;
+	const Kick_filePath =  "https://s3.amazonaws.com/astro-drum/gen_kick_12.wav" ;
   // Here we're `await`ing the async/promise that is `getFile`.
   // To be able to use this keyword we need to be within an `async` function
   const kick_sample = await getFile(audioCtx, Kick_filePath);
