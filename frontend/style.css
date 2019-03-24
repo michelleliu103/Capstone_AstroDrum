@@ -10,6 +10,14 @@ html * {
   padding: 0;
 }
 
+#canvas {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 120px;
+}
+
 body {
 	font-family: arial, sans-serif;
 	font-size: 1vw;
@@ -139,7 +147,7 @@ button{
     padding-left: 10px;
     padding-bottom: 10px;
     background-color: #686868;
-    margin-left: 5px;
+    margin-left: 0px;
     margin-right: 60px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -154,10 +162,6 @@ button{
 button:hover{
     background-color: #8F8D8D;
     filter: brightness(85%);
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
 }
 
 /* Dropdown Button */
@@ -206,7 +210,7 @@ button:hover{
 [class^="drum"] {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 7% 3% 4% 50%;
+  grid-template-columns: 8% 2% 2% 2% 60%;
   align-items: center;
   padding: 0px;
   margin-left: 10px;
@@ -229,18 +233,57 @@ button:hover{
 
 .next {
     font-size: 10px;
-    width: 30px;
+    width: 15px;
     padding: 0px;
-    background: #686868;
+    background: #385ADC;
     text-align: center;
     margin: 0px;
     border: none;
-    border-radius: 85px;
-    height: 30px;
+    border-radius: 10px;
+    height: 20px;
 	cursor: pointer;
 }
 
-#beatmarker{
+.mute {
+    font-size: 10px;
+    width: 15px;
+    padding: 0px;
+    background: #D8BF4A;
+    text-align: center;
+    margin: 0px;
+    border: none;
+    border-radius: 10px;
+    height: 20px;
+	cursor: pointer;
+}
+.next:hover{
+	background: #385ADC;
+	filter: brightness(120%) !important;
+}
+
+.mute:hover{
+	background: #D8BF4A;
+	filter: brightness(120%) !important;
+}
+
+.clear:hover{
+	background: #D13C3F;
+	filter: brightness(120%) !important;
+}
+.clear {
+    font-size: 10px;
+    width: 15px;
+    padding: 0px;
+    background: #D13C3F;
+    text-align: center;
+    margin: 0px;
+    border: none;
+    border-radius: 10px;
+    height: 20px;
+	cursor: pointer;
+}
+
+[id^="beatmarker"]{
 	background: transparent;
 }
 
