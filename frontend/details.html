@@ -41,18 +41,19 @@
 	</div>
 
 	<div class="LeftTextArea" align="left">
-		<p>WaveGAN is composed of two major components the generator and the discriminator, these two make up the adversarial component of the GAN.  Within the discriminator, we break it down to two neural networks one for "real" data, one for "fake" data.  Therefore, in total we actually have three neural networks in our GAN.  All networks are structured as five layer convolutional neural networks (CNNs).</p>
-		<p>The real discriminator takes the training data through its convolutional neural network in order to identify recognizable patterns in the training data.</p>
-		<p>The fake discriminator behaves similarly but uses generated audio examples (initialized randomly).  The loss function we attempt to minimize for the discriminator is actually the difference between the mean of errors between the “fake” discriminator and the “real” discriminator.  Through backwards propagation, the weights of the two networks are shared.</p>
-		<p>The generator uses the same weights in its own network, however, it actually tries to maximize the mean error with its generated audio. The interaction between the discriminator and the generator GANs’ loss functions is essentially a mini-max algorithm.  The discriminator attempts to minimize the loss function (fake - real), whereas the generator attempts to maximize the loss function (for the fake weights).   Thereby attempting to generate data which will “fool” the discriminator.</p>
+		<p>The WaveGAN model is composed of two major components the generator and the discriminator, which make up the adversarial component of the GAN.  Within the discriminator, we break it down to two neural networks one for "real" data, one for "fake" data.  Therefore, in total we actually have three neural networks in our GAN.</p>
+		<p>The real discriminator is a five layer convolutional neural network which takes the training data through its convolutional neural network, downsampling, in order to identify recognizable patterns in the training data.</p>
+		<p>The fake discriminator is structured identically to the "real" counterpart, but utilizes the results of our generator neural network.</p>
+		<p>The generator network is also strctured as a five layer neural network, but instead of doing downsampling, it actually begin with random weights then upsamples the data to generate an audio sample to mimic the apropriate bitrate and frequency of audio we're attempting to synthesize.</p>
+		<p>The particular implementation is a WGAN (or Wasserstein GAN); with the WGAN, instead of the discriminator producing a classification, it produces a "distribution" of what a particular sample may look like.  So in our case, we have a distribution for "real" data as well as a distribution for "fake" data.  The aspect of the WGAN takes these two distributions and computes the Wasserstein distance between the two in order to determine if a sample is real or fake (which distribution does it fall into).  In this implementation, the Discriminator and Generator are part of a two player mini-max game.  The discriminator attempts to minimize the loss function (fake - real), whereas the generator attempts to maximize the loss function (for the fake results) thereby attempting to generate data which will “fool” the discriminator.</p>
 	</div>
 	
 <div>
 		<h2>Convolution</h2>
-		<p>In the case of WaveGAN, we actually apply an upsampling filter on our data.  Consider the diagram.  With each audio sample we actually increasing the dimensionality of the feature space and “filling in” with the data filtered content.</p>
-		<p>The layers also conduct a “phase shuffle” which also helps introduce an element of periodicty in the data.</p>
-  <p>These notions of convolution are same in principal but slightly different in implementation than some image recognition applications in which dimensionality is actually reduced.  This upsampling can actually create periodic patterns in our data, which is actually more remniscent of true audio harmonics.</p>
-  		<img src="images/wavegan_convolution_audio.jpg" width="515" height="179" alt=""/>
+		<p>Convolution within a neural network can be simplisticly seen as the application of a filter to the data, in order to generalize and extract features.</p>
+		<p>This implementation uses two types of convolution: downsampling in our discriminators to filter and reduce dimensionality; and upsampling in our generator where we increase the dimensionality of our features to generate a sound sample.  In up sampling, consider the diagram, with each audio sample we actually increasing the dimensionality of the feature space and “filling in” with the data filtered content.  The NN layers also conduct a “phase shuffle” which also helps introduce an element of periodicty in the data.</p>
+  		<p>These notions of convolution are same in principal but slightly different in implementation than some image recognition applications in which dimensionality is actually reduced.  This upsampling can actually create periodic patterns in our data, which is actually more remniscent of true audio harmonics.</p>
+	    <img src="images/convolution_example.png" width="678" height="462" alt=""/> <img src="images/wavegan_convolution_audio.jpg" width="515" height="179" alt=""/>
 		<img src="images/phase_shuffle.png" width="1046" height="1056" alt=""/>
 	</div>
 
@@ -60,7 +61,7 @@
 	  <h2>Loss Analysis</h2>
 		<img src="images/kick_1_1_D_loss.png" width="1562" height="880" alt=""/>
 	  <img src="images/kick_1_1_G_loss.png" width="1550" height="872" alt=""/>
-<p>In some of our initial training runs, in this case with Kick Drums, we can compare the loss between the discriminator and generator neural networks.  This was after about 600 or so training steps, which based on our batch size only computed to about 50 epochs through the training set of 770 sound files and took about 5 days; furthermore the results were slow and audio was not spectacular.</p>
+		<p>In some of our initial training runs, in this case with Kick Drums, we can compare the loss between the discriminator and generator neural networks.  This was after about 600 or so training steps, which based on our batch size only computed to about 50 epochs through the training set of 770 sound files and took about 5 days; furthermore the results were slow and audio was not spectacular.</p>
 		<p>The discriminator loss is erratic but seems to stabilize eventually, but still quite a ways from zero, where we would ideally like it to be where it’s able to accurately predict between real and fake samples.</p>
 		<p>The generator loss is way off at the beginning but seems to stabilize closer to zero, it actually ends also at around -5, not too different from the discriminator, but not able to generate accurate sounds.</p>
 		
