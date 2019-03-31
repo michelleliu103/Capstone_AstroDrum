@@ -1,9 +1,23 @@
 # w210-capstone-astrodrum
-#### WAV Basics 1
-This covers reading in, playing and visualizing a .wav file
 
-#### WAV Basics 2
-This is really just testing some functions in utils. Specifically, how to splice (cut) a sample into two parts at a zero crossing in the .wav file
+## Concept
 
-#### WAV Basics 3
-This is the most basic 'model' for generating new kick drum sounds. It takes two random kicks given a directory of kick samples, cuts each into two parts and merges the first of one with the end of the other
+Incorporate a backend machine learning concept using GANs to generate a potentially unlimited supply of drum sounds which will can be utilized in a user friendly interface for music generation and beat mixing.
+
+### Process
+
+![alt text](frontend/images/overall_process.jpg)
+
+### Repo Structure
+
+#### Basics
+Induction/Prototype code to capture the basics of wave file processing in Python.
+
+#### Frontend
+Code for our website, which includes our user interface for beat generation.
+
+#### Wavegan
+Copy of wavegan repository (references within) which we utilized and experimented with in our GAN model learning and generation of synthetic audio files
+
+#### Code
+Additional code artificats for generating our synthetic sound files from our trained GAN models.  Key file here is SoundGenerator.ipynb
