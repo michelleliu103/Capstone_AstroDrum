@@ -72,6 +72,12 @@ function clearButton(){
     allPadButtons.forEach(el => {
         el.setAttribute('aria-checked', 'false');
     })
+	//also stop the drum machine
+	//isPlaying = !isPlaying;
+        playButton.style.display = 'inline-block';
+        pauseButton.style.display = 'none';	
+        audioCtx.suspend();
+	
 };
 
 const allHihatButtons = document.querySelectorAll('.drum-one .pads button');
@@ -398,9 +404,7 @@ var pauseButton = document.getElementById("stop_button");
 
 //TODO:
 function saveButton(){
-	arrayOfAudioBuffers = [hihat,snare,kick];
-	mixed = mix(arrayOfAudioBuffers);
-	console.log(mixed);
+	
 }
 
 

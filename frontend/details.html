@@ -9,11 +9,94 @@
 </style>  -->
 	
 <style type="text/css">
+
+html,8
+html * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	font-family: arial, sans-serif;
+	font-size: 1vw;
+	background: #2d2d2d;
+}
+
+header {
+  padding: 20px;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 95%;
+  background:rgba(0,0,0,0.2);
+  font-family: Impact, Charcoal, sans-serif;
+  font-size:36px;
+  background-image:-moz-linear-gradient( 135deg, rgb(160,55,220) 0%, rgb(83,200,234) 100%);
+  background-image: -webkit-linear-gradient( 135deg, rgb(160,55,220) 0%, rgb(83,200,234) 100%);
+  background-image: -ms-linear-gradient( 135deg, rgb(160,55,220) 0%, rgb(83,200,234) 100%);
+  letter-spacing: 4px;
+	position: fixed;
+}
+	
+	nav {
+  z-index: 400;
+  top: 0;
+  left: 0;
+  opacity: .9;
+  position: relative;
+  display: block !important;
+  float: right;
+  width: 33%;
+  padding: 0px;
+  height: 40px;
+  margin: 10px;
+}
+nav ul li {
+	float: left;
+	color: #FFFFFF;
+	font-size: 20px;
+	text-align: center;
+	margin-right: 25px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	transition: all 0.3s linear;
+}
+ul li a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+ul li:hover a {
+	color: #071A1F;
+}
+
+	
+.a {
+ ach position: relative;
+  color: #343144;
+  background: #fff;
+  height: 150px;
+  padding: 4em 4em 4em;
+  background-color: #2d2d2d;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+	
+.approach_header {
+	color: #FFFFFF;
+	text-align: center;
+	margin: 50px;
+	letter-spacing: 2px;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+
+}
+	
 .LeftTextArea {
     font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
-    font-size: 12px;
-	width: 400px;
-	margin: 0px;
+    font-size: 18px;
+	width: 90%;
+	margin: 20px;
+	color: #FFFFFF;
 }
 .rightTextArea {
     font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
@@ -22,21 +105,38 @@
 </style>
 </head>
 
-<body>
-	<h1>Background and Concepts</h1>
-<div class="LeftTextArea" align="left">
-		<h2>Approach</h2>
+	<header> Background and Concepts
+	
+			<nav>       
+			<ul>
+        <li><a href="index.html">Back to Homepage</a></li>
+      </ul>	</nav>
+	
+	</header>
+	
+	 <section class="approach" id="approach">
+    <h2 class="approach_header">Approach </h2>
+		 <div class="LeftTextArea" align="left">
 		<p>
 			In order to supply our application with an infinite amount of sounds, we wanted to implement a means to generate synthetic percussion sounds which sounded as natural and unique as possible.  To do so, we utilized and expanded upon an exisitng research project WaveGAN.
 		</p>
 	</div>
+  </section>
 	
-<div class="LeftTextArea" align="left">
-		<h2>WaveGAN</h2>
-		<p>WaveGAN is a research project for using unlabeled data in machine learning with the applicaiton of GANs (Generative Adversarial Networks) to generate synthetic sounds.</p>
-		<p>In our application we will be incorporating WaveGAN into our project for the training and generation of synthetic percussion instruments.</p>
+		 <section class="approach" id="wavegan">
+    <h2 class="approach_header">WaveGAN </h2>
+		 <div class="LeftTextArea" align="left">
+		<p>
+			WaveGAN is a research project for using unlabeled data in machine learning with the applicaiton of GANs (Generative Adversarial Networks) to generate synthetic sounds.</p>
+		<p>In our application we will be incorporating WaveGAN into our project for the training and generation of synthetic percussion instruments.
+		</p>
 	</div>
-<div class="rightTextArea" align="right">
+  </section>
+	
+<body>
+
+
+<div class="rightTextArea" align="middle">
 		<img src="images/gan_architecture.jpg" width="478" height="282" alt=""/>
 	</div>
 
@@ -48,57 +148,87 @@
 	</div>
 	
 <div>
-		<h2>Convolution</h2>
+	
+			 <section class="approach" id="wavegan">
+    <h2 class="approach_header">Convolution </h2>
+		 <div class="LeftTextArea" align="left">
 		<p>In the case of WaveGAN, we actually apply an upsampling filter on our data.  Consider the diagram.  With each audio sample we actually increasing the dimensionality of the feature space and “filling in” with the data filtered content.</p>
 		<p>The layers also conduct a “phase shuffle” which also helps introduce an element of periodicty in the data.</p>
   <p>These notions of convolution are same in principal but slightly different in implementation than some image recognition applications in which dimensionality is actually reduced.  This upsampling can actually create periodic patterns in our data, which is actually more remniscent of true audio harmonics.</p>
-  		<img src="images/wavegan_convolution_audio.jpg" width="515" height="179" alt=""/>
-		<img src="images/phase_shuffle.png" width="1046" height="1056" alt=""/>
+	</div>
+  </section>
+	
+		
+		
+  		<div  style="display:block; vertical-align:middle; text-align:center; margin: 20px"> <img src="images/wavegan_convolution_audio.jpg" > </div>
+		<div style="display:block; vertical-align:middle; text-align:center; argin: 20px" > <img src="images/phase_shuffle.png" width="515" height="515" alt=""/> </div>
 	</div>
 
 	<div>
-	  <h2>Loss Analysis</h2>
-		<img src="images/kick_1_1_D_loss.png" width="1562" height="880" alt=""/>
-	  <img src="images/kick_1_1_G_loss.png" width="1550" height="872" alt=""/>
+		<section class="approach" id="wavegan">
+    <h2 class="approach_header">Loss Analysis </h2>
+		
+		<div style="display:block; vertical-align:middle; text-align:center; margin: 20px"> <img src="images/kick_1_1_D_loss.png" width="775" height="250" alt=""/></div>
+	 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px">  <img src="images/kick_1_1_G_loss.png" width="775" height="250" alt=""/> </div>
+			<div class="LeftTextArea" align="left">
 <p>In some of our initial training runs, in this case with Kick Drums, we can compare the loss between the discriminator and generator neural networks.  This was after about 600 or so training steps, which based on our batch size only computed to about 50 epochs through the training set of 770 sound files and took about 5 days; furthermore the results were slow and audio was not spectacular.</p>
 		<p>The discriminator loss is erratic but seems to stabilize eventually, but still quite a ways from zero, where we would ideally like it to be where it’s able to accurately predict between real and fake samples.</p>
 		<p>The generator loss is way off at the beginning but seems to stabilize closer to zero, it actually ends also at around -5, not too different from the discriminator, but not able to generate accurate sounds.</p>
-		
+			</div>
+		</section>
 	</div>
 
 <div>
-		<h2>Training Challenges</h2>
+	<section class="approach" id="wavegan">
+    <h2 class="approach_header">Training Challenges </h2>
+		<div class="LeftTextArea" align="left">
 		<p>We attempted to generate better samples by using larger batch sizes, using spliced audio samples to increase the size of our dataset which did not have significantly better audio generation.  What ultimately needed to happen was improving our algorithm efficiency to train faster.</p>
   <p>Based on our challenges we improve our process by pre-processing our audio data to have consistent frequency and bit rates.  Training with this allowed us to use a more efficient python library and quickly process our data through the neural network.</p>
-  <img src="images/kick_2_0_D_loss.png" width="1578" height="868" alt=""/> </div>
-	<img src="images/kick_2_0_G_loss.png" width="1582" height="886" alt=""/>
+  
+		</div>
+		
+		 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px"><img src="images/kick_2_0_D_loss.png" width="775" height="250" alt=""/> </div>
+	 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px"> <img src="images/kick_2_0_G_loss.png" width="775" height="250" alt=""/> </div>
+	</section>
+	</div>
+	
 <div>
-  <h2>Additional Post Processing</h2>
-		<img src="images/real_waveform.png" width="2198" height="1270" alt=""/>
-	  <img src="images/generated_waveform.png" width="1946" height="974" alt=""/>
+	
+	<section class="approach" id="wavegan">
+    <h2 class="approach_header">Additional Post Processing </h2>
+
+		<div style="display:block; vertical-align:middle; text-align:center; margin: 20px">  <img src="images/real_waveform.png" width="775" height="250" alt=""/> </div>
+	 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px">   <img src="images/generated_waveform.png" width="775" height="250" alt=""/> </div>
+		<div class="LeftTextArea" align="left">
 <p>Our audio analysis showed us a very "digital" output, that is our wave forms resembled step functions.  To mitigate this, we conducted post processing on our generated audio using a low pass filter algorithm that attenuates our wave forms against high changes in frequency and pitch.  We additional applied a moving average filter which conducts further attenuation to help remove some of the reverberation in the audio which we generate.</p>
+		</div>
+	</section>
 </div>
 
 	<div>
-	  <h2>High Level Flow</h2>
-	</div>
+		<section class="approach" id="wavegan">
+    <h2 class="approach_header">High Level Flow </h2>
 
-	<div>
-	  <img src="images/overall_process.jpg" width="536" height="274" alt=""/>
-	</div>
+		<div style="display:block; vertical-align:middle; text-align:center; margin: 20px"> 	  <img src="images/overall_process.jpg" width="536" height="274" alt=""/> </div>
 
-	<div>
+	<div class="LeftTextArea" align="left">
 		<p>We begin by taking our raw audio data perform frequency and bitrate conversion so they’re all consistent (44100Hz and 16bit rate)  This is accumualted as out training data we use in our GAN</p>
 
 		<p>We train our GAN use the generative model to generate our new sounds for our application, but to improve quality, we run additional algorithms such as applying a low pass filter and wave form smooth (using moving average) to make our synthetic audio sound more natural.</p>
+		</div>
+</section>
 	</div>
-
+	
 	<div>
-	<h2>References/Citations</h2>
+		<section class="approach" id="wavegan">
+    <h2 class="approach_header">References/Citations </h2>
+			<div class="LeftTextArea" align="left">
 		Adversarial Audio Synthesis<br>
 		Donahue, Chris and McAuley, Julian and Puckette, Miller<br>
 		ICLR 2019<br>
 		https://github.com/chrisdonahue/wavegan<br>
+			</div>
+		</section>
 	</div>
 </body>
 </html>
