@@ -1,4 +1,13 @@
 console.clear();
+
+function openForm() {
+  document.getElementById("signinForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("signinForm").style.display = "none";
+}
+
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
 //start of copy and paste
@@ -225,30 +234,35 @@ let k = 0;
 async function changeHihat(){
 	//random # between 1-3
 	//var x = Math.floor((Math.random() * 3) + 1);
-	if (h>99) {h=0;}
+	if (h>199) {h=0;}
 	else{h++;}
 	//const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/VEH_Hihat_${h}.wav` ;
-	const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/hihat/gen_hihat_${h}.wav` ;
+	//const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/hihat/gen_hihat_${h}.wav` ;
+	const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/gen_20190330/gen_hihat_${h}.wav` ;
 	console.log(Hihat_filePath);
 	const hihat_sample = await getFile(audioCtx, Hihat_filePath);
 	hihat = hihat_sample;
 }
 
 async function changeSnare(){
-	if (s>99) {s=0;}
+	if (s>199) {s=0;}
 	else{s++;}
 	
  	//const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/VEH_Snare_${s}.wav` ;
-	const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/snare/gen_snare_${s}.wav` ;
+	//const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/snare/gen_snare_${s}.wav` ;
+	const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/gen_20190330/gen_snare_${s}.wav` ;
+	
 	console.log(Snare_filePath);
 	const snare_sample = await getFile(audioCtx, Snare_filePath);
 	snare = snare_sample;
 }
 
 async function changeKick(){
-	if (k>99) {k=0;}
+	if (k>199) {k=0;}
 	else{k++;}
-	const Kick_filePath = `https://s3.amazonaws.com/astro-drum/kick/gen_kick_${k}.wav` ;
+	//const Kick_filePath = `https://s3.amazonaws.com/astro-drum/kick/gen_kick_${k}.wav` ;
+	const Kick_filePath = `https://s3.amazonaws.com/astro-drum/gen_20190330/gen_kick_${k}.wav` ;
+	
 
 	console.log(Kick_filePath);
 	const kick_sample = await getFile(audioCtx, Kick_filePath);
@@ -261,10 +275,10 @@ async function setupSample() {
 	//console.log(x);
  // const filePath = `https://s3.amazonaws.com/astro-drum/GANKick_${x}.wav` ;
 	
-	const Hihat_filePath = "https://s3.amazonaws.com/astro-drum/hihat/gen_hihat_0.wav" ;
-	const Snare_filePath =  "https://s3.amazonaws.com/astro-drum/snare/gen_snare_0.wav" ;
-	const Kick_filePath =  "https://s3.amazonaws.com/astro-drum/gen_kick_12.wav" ;
-	
+	const Hihat_filePath = "https://s3.amazonaws.com/astro-drum/gen_20190330/gen_hihat_0.wav" ;
+	const Snare_filePath =  "https://s3.amazonaws.com/astro-drum/gen_20190330/gen_snare_0.wav" ;
+	const Kick_filePath =  "https://s3.amazonaws.com/astro-drum/gen_20190330/gen_kick_0.wav" ;
+		  
   // Here we're `await`ing the async/promise that is `getFile`.
   // To be able to use this keyword we need to be within an `async` function
   const kick_sample = await getFile(audioCtx, Kick_filePath);
@@ -401,11 +415,6 @@ function draw() {
 //const loadingEl = document.querySelector('.loading');
 const playButton = document.querySelector('[data-playing]');
 var pauseButton = document.getElementById("stop_button");
-
-//TODO:
-function saveButton(){
-	
-}
 
 
 let isPlaying = false;

@@ -56,8 +56,22 @@
 	  <button class="button" data-playing = "false" id="play_button"> PLAY <i class="fa fa-caret-right"></i></button>
 	  <button class="button" style="display: none;" id="stop_button"> STOP <i class="fa fa-stop"></i></button>
 	  <button class="button" id="clear_button" onClick="clearButton()"> CLEAR <i class="fa fa-close"></i></button>
-	  <button class="button" id="save_button" onClick="saveButton()"> SAVE <i class="fa fa-save"></i></button>
-	  <button class="button" id="share_button"> SHARE <i class="fa fa-share-alt"></i></button>
+	  <button class="button" id="save_button" onClick="openForm()"> SAVE <i class="fa fa-save"></i></button>
+	  <button class="button" id="share_button" onClick="openForm()"> SHARE <i class="fa fa-share-alt"></i></button>
+		<div class="form-popup" id="signinForm">
+  <form class="form-container">
+    <h4>Create an account to save and share your beats!</h4>
+	<label for="name"><b> Name </b></label>
+	  <input type="text" placeholder="Full name or DJ name" name="name" required>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="btn">Sign Up</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
 		
 	</div>
 
@@ -199,7 +213,7 @@
       <section class="drum-beats">
         <div id = "beatmarker1" class="name"></div>
 		 <div id = "beatmarker2" class="name"></div>
-		  <div id = "beatmarker3" class="name"></dˊiv>
+		  <div id = "beatmarker3" class="name"></div>
 		  
 		  <!-- invisible offset -->  
 <div class="nextfooter"> </div>
