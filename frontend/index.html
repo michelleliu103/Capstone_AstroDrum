@@ -80,11 +80,11 @@
 	<div id="drums">
       <!-- drum one: kickdrum -->
       <section class="drum-one">
-        <div class="name">Hihat</div>
-		  <button class="next" onClick="changeHihat()" > <i class="fa fa-random"></i></button>
-		  <button class="mute" id="muteHihatButton" onClick="muteHihat()"> <i class="fa fa-microphone-slash"></i></button>
-		  <button class="mute" id="unmuteHihatButton" style="display: none;" onClick="muteHihat()" id="mute_hihat_button"> <i class="fa fa-microphone"></i></button>
-		  <button class="clear" onClick="clearHihat()"> <i class="fa fa-close"> </i></button>
+        <div title="Hihat" class="name">Hihat</div>
+		  <button title="Change Hihat" class="next" onClick="changeHihat()" style="z-index: 999;" > <i class="fa fa-random"></i></button>
+		  <button title="Mute Hihat" class="mute" id="muteHihatButton" onClick="muteHihat()"> <i class="fa fa-microphone-slash"></i></button>
+		  <button class="mute" id="unmuteHihatButton" style="display: none;" onClick="muteHihat()"> <i class="fa fa-microphone"></i></button>
+		  <button title="Clear Hihat" class="clear" onClick="clearHihat()"> <i class="fa fa-close"> </i></button>
 		  <section class="pads">
           <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
           <button role="switch" aria-checked="false"><span></span></button>
@@ -124,10 +124,10 @@
       <!-- track two: pad/sweep -->
       <section class="drum-two">
 		  <div class="name">Snare</div>
-		  <button class="next" onClick="changeSnare()"> <i class="fa fa-random"></i></button>
-		  <button class="mute" id="muteSnareButton" onClick="muteSnare()"> <i class="fa fa-microphone-slash"></i> </button>
+		  <button title="Change Snare" class="next" onClick="changeSnare()"> <i class="fa fa-random"></i></button>
+		  <button title="Mute Snare" class="mute" id="muteSnareButton" onClick="muteSnare()"> <i class="fa fa-microphone-slash"></i> </button>
 		  <button class="mute" id="unmuteSnareButton" style="display: none;" onClick="muteSnare()"> <i class="fa fa-microphone"></i></button>
-		  <button class="clear" onClick="clearSnare()"> <i class="fa fa-close"> </i></button>
+		  <button title="Clear Snare" class="clear" onClick="clearSnare()"> <i class="fa fa-close"> </i></button>
 
         <section class="pads">
           <button class="onbeat" role="switch" aria-checked="false"><span></span></button>
@@ -168,10 +168,10 @@
       <!-- track three: noise -->
       <section class="drum-three">
         <div class="name">Kickdrum</div>
-		  <button class="next" onClick="changeKick()"> <i class="fa fa-random"></i></button>
-		  <button class="mute" id="muteKickButton" onClick="muteKick()"> <i class="fa fa-microphone-slash"></i></button>
+		  <button title="Change Kickdrum" class="next" onClick="changeKick()"> <i class="fa fa-random"></i></button>
+		  <button title="Mute Kickdrum" class="mute" id="muteKickButton" onClick="muteKick()"> <i class="fa fa-microphone-slash"></i></button>
 		  <button class="mute" id="unmuteKickButton" style="display: none;" onClick="muteKick()"> <i class="fa fa-microphone"></i></button>
-		  <button class="clear" onClick="clearKick()"> <i class="fa fa-close"> </i></button>
+		  <button title="Clear Kickdrum" class="clear" onClick="clearKick()"> <i class="fa fa-close"> </i></button>
 
 		  <section class="pads">
           <button class="onbeat" role="switch" aria-checked="true"><span></span></button>
