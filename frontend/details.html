@@ -274,9 +274,19 @@ ul li:hover a {
 		<tr valign="top">
 			<td colspan="2" valign="top">
 				<font color = "white" font="arial" size="3">
-				We attempted to generate better samples by using larger batch sizes, using spliced audio samples to increase the size of our dataset which did not have significantly better audio generation. What ultimately needed to happen was improving our algorithm efficiency to train faster.<br><br>
+				We attempted to generate better samples by using larger batch sizes, using spliced audio samples to increase the size of our dataset which did not have significantly better audio generation. What ultimately needed to happen was improving algorithm efficiency to train faster.<br><br>
   				
 				Based on our challenges we improve our process by pre-processing our audio data to have consistent frequency and bit rates.  Training with this allowed us to use a more efficient python library (sciPy as opposed to Librosa) and quickly process our data through the neural network.<br><br>
+
+				Our best training results took advantage of the following:<br>
+				<ul>
+					<li>Training batches of 64 samples</li>
+					<li>Data normalization</li>
+					<li>Data Dimension 32-bits (representation of data encoding)</li>
+					<li>Using consistent audio rate: 16-bit audio, 44100Hz</li>
+				</ul><br>
+
+        Using the lessons learned from generating our Kick Drum sounds, we then expanded to generate additional models capable of producing Snare Drum and Hi Hat sounds.<br><br>
 				</font>
 			</td>
 		</tr>
@@ -342,7 +352,7 @@ ul li:hover a {
 			</td>
 			<td width="50%" valign="top">
 				<font color = "white" font="arial" size="3">
-				In order to perform training on our neural network we utilized GPUs which we provisioned from AWS. Neural networks are computationally heavy to train with the need to repeatedly calculate the loss function and backpropagation of weights through the network being train, as a result GPUs are advantageous for their high capacity for handling matrix calculations.<br><br>
+				Neural networks are computationally heavy to train with the need to repeatedly calculate the loss function and backpropagation of weights through the network being train, as a result GPUs are advantageous for their high capacity for handling matrix calculations.  The GANs were developed utilizing TensorFlow libraries and were enabled to run on GPUs for faster processing during model training and model execution for our synthetic sound generation.  Therefore, in our implementation, provisioned resources from AWS to support our backend development.<br><br>
 				
 				We utilized multiple AWS Elastic Cloud Compute (EC2) instances, one for each type of model training, The generative models were then stored on Elastic Block Storage (EBS) which could then be used by the an existing (or new) EC2 instance for our generative audio processing. These sounds are generated en-mass and stored on AWS S3 buckets for use by our application. Future development could have our generative models producing audio files on-demand, however, for efficiency and a cost effective solution, we opted to use S3 buckets as opposed to a constantly running EC2 instance.<br><br>
   				</font>

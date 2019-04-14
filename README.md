@@ -6,7 +6,7 @@ Incorporate a backend machine learning concept using GANs to generate a potentia
 
 ### Process
 
-![alt text](frontend/images/overall_process.jpg)
+![Overall Process](frontend/images/overall_process.jpg)
 
 The overall process flow:
 * Obtain input training audio data (kick drum, snare drum, etc..) sounds.
@@ -37,7 +37,7 @@ We used AWS to provision a GPU enabled VM to process our training, we began with
 * Data dimension (data encoding bit size)
 * Audio frequency variability
 
-Our best training results found the following attributes to be "ideal":
+Our best training results found the following attributes to be useful:
 * Batches of 64 samples
 * Data normalization
 * Dimensionality at 32 bits
@@ -47,10 +47,8 @@ The preceding findings were helpful in simplifying and ultimately accelerating t
 
 Audio results were previewed and tested manually, ie what was appealing to the human ear.  However, to guide this, we still conducted some analysis of our loss function results using TensorBoard.
 
-![alt text](frontend/images/kick_2_0_D_loss.jpg)
-![alt text](frontend/images/kick_2_0_G_loss.jpg)
-
-Using those lessons, we proceded to training additional sounds: snare drum and hi-hats for our application.
+Additional insights and details to our implementation can be found on our project website details page.
+http://www.astrobeats.com.s3-website-us-east-1.amazonaws.com/details.html
 
 ### Repo Structure
 
@@ -58,7 +56,8 @@ Using those lessons, we proceded to training additional sounds: snare drum and h
 Introduction/Prototype code to capture the basics of wave file processing in Python.
 
 #### Frontend
-Code for our website, which includes our user interface for beat generation.
+Code for our website, which includes our user interface for beat generation.  Link to our operational website:
+http://www.astrobeats.com.s3-website-us-east-1.amazonaws.com/
 
 #### Code
 Additional code artificats for generating our synthetic sound files from our trained GAN models.  Key file here is SoundGenerator.ipynb
