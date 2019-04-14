@@ -24,7 +24,6 @@ var analyser = audioCtx.createAnalyser();
     analyser.fftSize = 256;
 
     var bufferLength = analyser.frequencyBinCount;
-    console.log(bufferLength);
 
     var dataArray = new Uint8Array(bufferLength);
 
@@ -77,7 +76,7 @@ allPadButtons.forEach(el => {
 
 //script to clear the selected buttons
 function clearButton(){
-    console.log("clear");
+    //console.log("clear");
     allPadButtons.forEach(el => {
         el.setAttribute('aria-checked', 'false');
     })
@@ -94,21 +93,21 @@ const allSnareButtons = document.querySelectorAll('.drum-two .pads button');
 const allKickButtons = document.querySelectorAll('.drum-three .pads button');
 
 function clearHihat(){
-	console.log("clear hihat");
+	//console.log("clear hihat");
 	allHihatButtons.forEach(el => {
         el.setAttribute('aria-checked', 'false');
     })
 }
 
 function clearSnare(){
-	console.log("clear snare");
+	//console.log("clear snare");
 	allSnareButtons.forEach(el => {
         el.setAttribute('aria-checked', 'false');
     })
 }
 
 function clearKick(){
-	console.log("clear kick");
+	//console.log("clear kick");
 	allKickButtons.forEach(el => {
         el.setAttribute('aria-checked', 'false');
     })
@@ -133,7 +132,7 @@ function muteHihat(){
 	muteHihatButton.style.display = 'none';
 	unmuteHihatButton.style.display = 'inline-block';
 	
-	console.log("mute hihat");
+	//console.log("mute hihat");
 	mutedHihat = 1;
 	allHihatButtons.forEach(el => {
         el.style.opacity = 0.5;
@@ -144,7 +143,7 @@ function muteHihat(){
 	muteHihatButton.style.display = 'inline-block';
 	unmuteHihatButton.style.display = 'none';
 	
-	console.log("unmute hihat");
+	//console.log("unmute hihat");
 	mutedHihat = 0;
 	allHihatButtons.forEach(el => {
 		el.style.opacity = 1;
@@ -159,7 +158,7 @@ function muteSnare(){
 	muteSnareButton.style.display = 'none';
 	unmuteSnareButton.style.display = 'inline-block';
 	
-	console.log("mute snare");
+	//console.log("mute snare");
 	mutedSnare = 1;
 	allSnareButtons.forEach(el => {
         el.style.opacity = 0.5;
@@ -170,7 +169,7 @@ function muteSnare(){
 	muteSnareButton.style.display = 'inline-block';
 	unmuteSnareButton.style.display = 'none';
 	
-	console.log("unmute snare");
+	//console.log("unmute snare");
 	mutedSnare = 0;
 	allSnareButtons.forEach(el => {
 		el.style.opacity = 1;
@@ -184,7 +183,7 @@ function muteKick(){
 	muteKickButton.style.display = 'none';
 	unmuteKickButton.style.display = 'inline-block';
 	
-	console.log("mute kick");
+	//console.log("mute kick");
 	mutedKick = 1;
 	allKickButtons.forEach(el => {
         el.style.opacity = 0.5;
@@ -195,7 +194,7 @@ function muteKick(){
 	muteKickButton.style.display = 'inline-block';
 	unmuteKickButton.style.display = 'none';
 	
-	console.log("unmute kick");
+	//console.log("unmute kick");
 	mutedKick = 0;
 	allKickButtons.forEach(el => {
 		el.style.opacity = 1;
@@ -239,7 +238,7 @@ async function changeHihat(){
 	//const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/VEH_Hihat_${h}.wav` ;
 	//const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/hihat/gen_hihat_${h}.wav` ;
 	const Hihat_filePath =  `https://s3.amazonaws.com/astro-drum/gen_20190330/gen_hihat_${h}.wav` ;
-	console.log(Hihat_filePath);
+	//console.log(Hihat_filePath);
 	const hihat_sample = await getFile(audioCtx, Hihat_filePath);
 	hihat = hihat_sample;
 }
@@ -252,7 +251,7 @@ async function changeSnare(){
 	//const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/snare/gen_snare_${s}.wav` ;
 	const Snare_filePath =  `https://s3.amazonaws.com/astro-drum/gen_20190330/gen_snare_${s}.wav` ;
 	
-	console.log(Snare_filePath);
+	//console.log(Snare_filePath);
 	const snare_sample = await getFile(audioCtx, Snare_filePath);
 	snare = snare_sample;
 }
@@ -264,16 +263,12 @@ async function changeKick(){
 	const Kick_filePath = `https://s3.amazonaws.com/astro-drum/gen_20190330/gen_kick_${k}.wav` ;
 	
 
-	console.log(Kick_filePath);
+	//console.log(Kick_filePath);
 	const kick_sample = await getFile(audioCtx, Kick_filePath);
 	kick = kick_sample;
 }
 
 async function setupSample() {
-	
-  //var x = Math.floor((Math.random() * 3) + 1);
-	//console.log(x);
- // const filePath = `https://s3.amazonaws.com/astro-drum/GANKick_${x}.wav` ;
 	
 	const Hihat_filePath = "https://s3.amazonaws.com/astro-drum/gen_20190330/gen_hihat_0.wav" ;
 	const Snare_filePath =  "https://s3.amazonaws.com/astro-drum/gen_20190330/gen_snare_0.wav" ;
@@ -294,20 +289,29 @@ pattern_chosen.onchange = function() {
     pattern = pattern_chosen.value;
 	var patternArray;
 	if (pattern==1) {
-		patternArray = [1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,
-						0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
-						1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
+		patternArray = [0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,1,1,1,1,0,0,1,0,0,0,1,0,0,0,1,0,1,1,1,1,
+                       0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,
+                       0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0];
+		tempo = 120;
+		input.value = 120;
+    }
+    else if (pattern==2) {
+        patternArray = [0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,
+                        0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,
+                        0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,1,0];
+		tempo = 160;
+		input.value = 160;
+    }
+	
+    else{
+        patternArray = [0,0,0,0,0,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,
+                        0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,
+                        0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0]
+    
+		tempo = 70;
+		input.value = 70;
 	}
-	else if (pattern==2) {
-		patternArray = [0,0,1,0,0,0,1,0,0,0,1,0,1,1,1,1,0,0,1,0,0,0,1,0,0,0,1,0,1,1,1,0,
-						0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,
-						0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0]
-	}
-	else{
-		patternArray = [0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,
-						0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,1
-						,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-	}
+	
 	arrayToButton(patternArray);
 };
 
@@ -365,15 +369,12 @@ function scheduleNote(beatNumber, time) {
 	//if the row is NOTmute and the button is pressed, then play
     if ((pads[0].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') && (mutedHihat==0)) {
         playSample(audioCtx, hihat);
-		//console.log("hihat");
     }
     if ((pads[1].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') &&(mutedSnare==0)) {
         playSample(audioCtx, snare);
-		//console.log("snare");
     }
     if ((pads[2].querySelectorAll('button')[currentNote].getAttribute('aria-checked') === 'true') && (mutedKick==0)) {
         playSample(audioCtx, kick);
-		//console.log("kick");
     }
 }
 
@@ -420,7 +421,6 @@ var pauseButton = document.getElementById("stop_button");
 let isPlaying = false;
 setupSample()
   .then(([hihat_sample, snare_sample, kick_sample]) => {
-    //loadingEl.style.display = 'none';
 	
 	snare = snare_sample;
     kick = kick_sample; // to be used in our playSample function
@@ -443,7 +443,6 @@ setupSample()
         nextNoteTime = audioCtx.currentTime;
         scheduler(); // kick off scheduling
         requestAnimationFrame(draw); // start the drawing loop.
-		//copy
 		  renderFrame();
         ev.target.dataset.playing = 'true';
       } else {

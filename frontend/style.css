@@ -15,7 +15,7 @@ html * {
   left: 0;
   top: 0;
   width: 100%;
-  height: 120px;
+  height: 200px;
 }
 
 body {
@@ -25,13 +25,11 @@ body {
 }
 
 header {
-  position: fixed;
-  padding: 1em;
+  position: relative;
+  padding: 2em;
   z-index: 1000;
   top: 0;
   left: 0;
-  width: 95%;
-  background:rgba(0,0,0,0.2);
   font-family: Impact, Charcoal, sans-serif;
   font-size:36px;
   background-image:-moz-linear-gradient( 135deg, rgb(160,55,220) 0%, rgb(83,200,234) 100%);
@@ -48,9 +46,9 @@ nav {
   position: relative;
   display: block !important;
   float: right;
-  width: 33%;
-  padding: 40px 40px 0px 0px;
-  height: 40px;
+  width: 40%;
+  padding: 20px 0px 0px 0px;
+	font-family: arial, sans-serif;
 }
 nav ul li {
 	float: left;
@@ -73,11 +71,12 @@ ul li:hover a {
 .home_header {
 	color: #FFFFFF;
 	text-align: center;
-	margin-top: 150px;
+	margin-top: 30px;
 	margin-right: 100px;
 	margin-bottom: 0px;
 	margin-left: 100px;
 	letter-spacing: 4px;
+	padding: 0px;
 }
 
 {box-sizing: border-box;}
@@ -157,14 +156,9 @@ h4{
 
 /* Home Section */
 .home {
-  position: relative;
   color: #343144;
   background: #fff;
-  height: 150px;
-  padding: 4em 4em 4em;
   background-color: #2d2d2d;
-  padding-top: 50px;
-  padding-bottom: 50px;
 }
 
 .beat {
@@ -187,10 +181,10 @@ h4{
 .control_bar{
 	font-family: Impact, Charcoal, sans-serif;
 	height: 50px;
-	width: 95%;
+	width: 100%;
 	text-align: left;
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-left: 0px;
+	margin-right: 0px;
 	margin-top: 20px;
 	margin-bottom: 10px;
 	background-color: #686868;
@@ -223,7 +217,7 @@ button{
     padding-bottom: 10px;
     background-color: #686868;
     margin-left: 0px;
-    margin-right: 60px;
+    margin-right: 30px;
     margin-top: 0px;
     margin-bottom: 0px;
     cursor: pointer;
@@ -242,7 +236,7 @@ button:hover{
 /* Dropdown Button */
 .bpm_display{
     text-align: left;
-    width: 90px;
+    width: 100px;
     height: 30px;
     background-color: #686868;
     color: white;
@@ -253,6 +247,7 @@ button:hover{
     border: none;
     float: left;
     margin: 0px;
+	font-family: arial, sans-serif;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -293,13 +288,15 @@ button:hover{
 }
 
 .name {
-    font-family: Impact, Charcoal, sans-serif;
+    font-family: arial, sans-serif;
+	letter-spacing: 1px;
+	color: white;
     padding: 5px;
     margin-top: 10px;
     margin-right: 10px;
     margin-left: 10px;
     margin-bottom: 10px;
-    width: 64px;
+    width: 70px;
     height: 20px;
     background: #686868;
     text-align: center;
@@ -422,44 +419,42 @@ button:hover{
   margin: 3px;
   text-align: center;
 }
+.section_header{
+  font-family: Impact, Charcoal, sans-serif;
+  font-size:36px;
+  letter-spacing: 4px;
+  width: 100%;
+  margin-left: 30px;
+	margin-top: 0px;
+	margin-bottom: 30px;
+	padding-top: 20px;
+}
 
+.aboutncontact{
+	    background-image: -moz-linear-gradient( -45deg, #FFDAB9 0%, #cb60b3 100%);
+    background-image: -webkit-linear-gradient( -45deg, #FFDAB9 0%, #cb60b3 100%);
+    background-image: -ms-linear-gradient( -45deg, #FFDAB9 0%, #cb60b3 100%); 
+}
 /* About Section */
 .about {
-    height: 50px;
-    background-image: -moz-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
-    background-image: -webkit-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
-    background-image: -ms-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
-    width: 100%;
+
     font-family: Impact, Charcoal, sans-serif;
     font-size: 36px;
 }
 
 h1 {
-	height: 200px;
-    background-image: -moz-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
-    background-image: -webkit-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
-    background-image: -ms-linear-gradient( -45deg, #cb60b3 0%, #db36a4 100%);
-    width: 100%;
-    font-size: 18px;
-	margin: 0px;
+    font-size: 16px;
+	margin: 15px;
+	font-weight: lighter;
+	font-family: arial, sans-serif;
+	padding: 10px;
+	line-height: 1.5;
 }
+
 /* Contact Section */
 .contact {
-    height: 50px;
-    background-image: -moz-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
-    background-image: -webkit-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
-    background-image: -ms-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
     font-family: Impact, Charcoal, sans-serif;
     font-size: 36px;
-    width: 100%;
-}
-
-
-.container {
-  width: 100%;
-  background-image: -moz-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
-  background-image: -webkit-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
-  background-image: -ms-linear-gradient( -45deg, #ebe9f9 0%, #c1bfea 100%);
 }
 
 .row {
@@ -521,20 +516,34 @@ h1 {
 .rounded-circle {
   border-radius: 50% !important;
 }
+h3{
+	font-size: 20px;
+	font-family: arial, sans-serif;
+	margin: 5px;
+}
   p, h2, h3 {
     orphans: 3;
     widows: 3;
   }
+.role{
+	font-style: italic;
+	color: darkslategrey;
+	font-size: 16px;
+}
+.email{
+	font-size: 14px;
+	color: darkslategrey
+}
   h2, h3 {
     page-break-after: avoid;
   }
  /* Footer Section*/
 footer {
     height: 50px;
-    background-image: -moz-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
-    background-image: -webkit-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
-    background-image: -ms-linear-gradient( -45deg, rgb(255,91,127) 0%, rgb(255,213,86) 100%);
-    width: 100%;
-}
-.nextfooter {
+  background-image:-moz-linear-gradient( 135deg, rgb(160,55,220) 0%, rgb(83,200,234) 100%);
+  background-image: -webkit-linear-gradient( 135deg, rgb(160,55,220) 0%, rgb(83,200,234) 100%);
+  background-image: -ms-linear-gradient( 135deg, rgb(160,55,220) 0%, rgb(83,200,234) 100%);
+text-align: right;
+	padding-top: 20px;
+	padding-right: 20px;
 }
