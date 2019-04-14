@@ -21,6 +21,7 @@ body {
 	font-family: arial, sans-serif;
 	font-size: 1vw;
 	background: #2d2d2d;
+	padding: 80px;
 }
 
 header {
@@ -82,7 +83,7 @@ ul li:hover a {
   padding-bottom: 50px;
 }
 	
-.approach_header {
+.section_header {
 	color: #FFFFFF;
 	text-align: center;
 	margin: 50px;
@@ -94,162 +95,278 @@ ul li:hover a {
 .LeftTextArea {
     font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
     font-size: 18px;
-	width: 90%;
 	margin: 20px;
 	color: #FFFFFF;
 }
-.rightTextArea {
+.LeftImageArea {
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size: 18px;
+	margin: 20px;
+	color: #FFFFFF;
+	float: left;
+}
+.RightTextArea {
     font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
     font-size: 12px;
+	float: right;
 }
+.TextArea {
+	margin: 20px;
+}
+
 </style>
 </head>
-
 	<header> Background and Concepts
-	
-			<nav>       
+		<nav>       
 			<ul>
-        <li><a href="index.html">Back to Homepage</a></li>
-      </ul>	</nav>
-	
+				<li><a href="index.html">Back to Homepage</a></li>
+			</ul>
+		</nav>
 	</header>
-	
-	 <section class="approach" id="approach">
-    <h2 class="approach_header">Approach </h2>
-		 <div class="LeftTextArea" align="left">
-		<p>
-			In order to supply our application with an infinite amount of sounds, we wanted to implement a means to generate synthetic percussion sounds which sounded as natural and unique as possible.  To do so, we utilized and expanded upon an exisitng research project WaveGAN.
-		</p>
-	</div>
-  </section>
-	
-		 <section class="approach" id="wavegan">
-    <h2 class="approach_header">WaveGAN </h2>
-		 <div class="LeftTextArea" align="left">
-		<p>
-			WaveGAN is a research project for using unlabeled data in machine learning with the applicaiton of GANs (Generative Adversarial Networks) to generate synthetic sounds.</p>
-		<p>In our application we will be incorporating WaveGAN into our project for the training and generation of synthetic percussion instruments.
-		</p>
-	</div>
-  </section>
-	
+	<br><br><br>
 <body>
+	<table width = 100% height=100% border=0 cellspacing="0" cellpadding="2">
+		<tr>
+			<td colspan="2" align="center">
+						<font color = "white" font="arial" size="5">
+				Approach <br><br>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<font color = "white" font="arial" size="3">
+					In order to supply our application with an infinite amount of sounds, we wanted to implement a means to generate synthetic percussion sounds which sounded as natural and unique as possible. <br><br>
+	   		</td>
+	   	</tr>
+	   	<tr>
+			<td colspan="2" align="center">
+						<font color = "white" font="arial" size="5">
+				WaveGAN <br><br>
+			</td>
+		</tr>
+		<tr valign="top">
+			<td width="25%">
+				<img src="images/gan_architecture.jpg"  height="282" border="3" alt=""/>
+			</td>
+			<td width="75%" valign="top">
+				<font color = "white" font="arial" size="3">
+				WaveGAN is a research project for using unlabeled data in machine learning with the applicaiton of GANs (Generative Adversarial Networks) to generate synthetic sounds.<br><br>
+				In our application we will be incorporating pre-architected WaveGAN Neural Networks into our project for the training and generation of our models which will be used for the generation of our synthetic percussion instruments used in our AstroBeat application.<br><br>
+				The WaveGAN model is composed of two major components the generator and the discriminator, which make up the adversarial component of the GAN.  Within the discriminator, we break it down to two neural networks one for "real" data, one for "fake" data.  Therefore, in total we actually have three neural networks in our GAN.<br><br>
+			</td>
+		</tr>
 
+		<tr valign="top">
+			<td width="50%">
+				<img src="images/wgan_prob_dist_simple.png" width=600 height="350" alt="" border="3" valign=top/>
+			</td>
+			<td width="50%" valign="top">
+				<font color = "white" font="arial" size="3">
+				The WaveGAN implementation is a Wasserstein GAN (WGAN); with the WGAN, instead of the discriminator producing a classification, it produces a "distribution" of what a particular sample may look like.  So in our case, we have a distribution for "real" data as well as a distribution for "fake" data.  The aspect of the WGAN takes these two distributions and computes the Wasserstein distance between the two in order to determine if a sample is real or fake (which distribution does it fall into).  In this implementation, the Discriminator and Generator are part of a two player mini-max game.  The discriminator attempts to minimize the loss function (fake - real), whereas the generator attempts to maximize the loss function (for the fake results) thereby attempting to generate data which will “fool” the discriminator.<br><br>
+				One can visualize this as the Discriminator GAN adjusting its weights in order to discriminate an audio pattern as possibily being "real" or "fake".  The Generator GAN would have this information fed back and adjust its weights to increase the "fake" probability distribution to contend with the "real" distribution.<br><br>
+			</td>
+		</tr>
 
-<div class="rightTextArea" align="middle">
-		<img src="images/gan_architecture.jpg" width="478" height="282" alt=""/>
-	</div>
+		<tr valign="top">
+			<td width="50%">
+				<img src="images/NeuralNetwork.jpg" height="282" alt="" border="3" valign=top/>
+			</td>
+			<td width="50%" valign="top">
+				<font color = "white" font="arial" size="3">
+				The real discriminator is a five layer convolutional neural network which takes the training data through its convolutional neural network, downsampling, in order to identify recognizable patterns in the training data. The fake discriminator is structured identically to the "real" counterpart, but utilizes the results of our generator neural network.<br><br>
+				The generator network is also strctured as a five layer neural network, but instead of doing downsampling, it actually begin with random weights then upsamples the data to generate an audio sample to mimic the apropriate bitrate and frequency of audio we're attempting to synthesize.<br><br>
+				The networks use a combination of convolutional (filters) and ReLu (Rectifier Linear Units) esstintially activation functions to alter the dimensionality and identifiy patterns in the data.<br><br>
+			</td>
+		</tr>
 
-	<div class="LeftTextArea" align="left">
-		<p>The WaveGAN model is composed of two major components the generator and the discriminator, which make up the adversarial component of the GAN.  Within the discriminator, we break it down to two neural networks one for "real" data, one for "fake" data.  Therefore, in total we actually have three neural networks in our GAN.</p>
+		<tr>
+			<td colspan="2" align="center">
+						<font color = "white" font="arial" size="5">
+				Convolution <br><br>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<font color = "white" font="arial" size="3">
+					Convolution within a neural network can be simplisticly seen as the application of a filter to the data, in order to generalize and extract features.  This implementation uses two types of convolution: downsampling in our discriminators to filter and reduce dimensionality; and upsampling in our generator where we increase the dimensionality of our features to generate a sound sample.<br><br>
+	   		</td>
+	   	</tr> 
+
+		<tr valign="top">
+			<td width="50%">
+				<img src="images/convolution_example.png"  width="500" height="300" border="3" alt=""/>
+			</td>
+			<td width="50%" valign="top">
+				<font color = "white" font="arial" size="3">
+				This diagram is an example of how convolutional is conducted in a neural network as a form of downsampling the data.  A filter is applied to a subset of the data and will result in a smaller dataset.  Downsampling reduces the number of features for subsequent layers to work with, generalizing, and detecting patterns in the dataset.<br><br>
+				</font>
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<td width="50%">
+				<img src="images/wavegan_convolution_audio.jpg"  width="500" height="300" border="3" alt=""/>
+			</td> 
+			<td width="50%" valign="top">
+				<font color = "white" font="arial" size="3">
+				In upsampling, consider the above diagram, with each audio sample we actually increasing the dimensionality of the feature space and “filling in” with the data filtered content.  The NN layers also conduct a “phase shuffle” which also helps introduce an element of periodicty in the data.  This is the type of filtering conducted in the Generator NN.<br><br>
+				</font>
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<td width="50%">
+				<img src="images/phase_shuffle.png"  width="400" height="300" border="3" alt=""/>
+			</td> 
+			<td width="50%" valign="top">
+				<font color = "white" font="arial" size="3">
+				In conjunction with upsampling, the generator also performs a "phase shuffle" to the data.  While introducing some randomness, this can actually create periodic patterns in our data, which is actually more remniscent of true audio harmonics.<br><br>
+				</font>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="2" align="center">
+				<font color = "white" font="arial" size="5">
+					Loss Analysis <br><br>
+				</font>
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<td width="50%">
+				<img src="images/kick_1_1_D_loss.png"  width="500" height="300" border="3" alt=""/>
+			</td>
+			<td width="50%">
+				<img src="images/kick_1_1_G_loss.png"  width="500" height="300" border="3" alt=""/>
+			</td>
+		</tr>
 		
-		<div class="rightTextArea" align="middle">
-		<img src="images/NeuralNetwork.jpg" width="378" height="282" alt=""/>
-	</div>
+		<tr valign="top">
+			<td colspan="2" valign="top">
+				<font color = "white" font="arial" size="3">
+				In some of our initial training runs, in this case with Kick Drums, we can compare the loss between the discriminator and generator neural networks. This was after about 600 or so training steps, which based on our batch size only computed to about 50 epochs through the training set of 770 sound files and took about 5 days; furthermore the results were slow and audio was not spectacular.<br><br>
+				
+				The discriminator loss is erratic but seems to stabilize eventually, but still quite a ways from zero, where we would ideally like it to be where it’s able to accurately predict between real and fake samples.<br><br>
+				
+				The generator loss is way off at the beginning but seems to stabilize closer to zero, it actually ends also at around -5, not too different from the discriminator, but not able to generate accurate sounds.<br><br>
+				</font>
+			</td>
+		</tr>
 		
-		<p>The real discriminator is a five layer convolutional neural network which takes the training data through its convolutional neural network, downsampling, in order to identify recognizable patterns in the training data. The fake discriminator is structured identically to the "real" counterpart, but utilizes the results of our generator neural network.</p>
 		
-		<p>The generator network is also strctured as a five layer neural network, but instead of doing downsampling, it actually begin with random weights then upsamples the data to generate an audio sample to mimic the apropriate bitrate and frequency of audio we're attempting to synthesize.</p>
+		<tr>
+			<td colspan="2" align="center">
+				<font color = "white" font="arial" size="5">
+					Training Challenges <br><br>
+				</font>
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<tr valign="top">
+			<td width="50%">
+				<img src="images/kick_2_0_D_loss.png"  width="500" height="300" border="3" alt=""/>
+			</td>
+			<td width="50%">
+				<img src="images/kick_2_0_G_loss.png"  width="500" height="300" border="3" alt=""/>
+			</td>
+		<tr valign="top">
+			<td colspan="2" valign="top">
+				<font color = "white" font="arial" size="3">
+				We attempted to generate better samples by using larger batch sizes, using spliced audio samples to increase the size of our dataset which did not have significantly better audio generation. What ultimately needed to happen was improving our algorithm efficiency to train faster.<br><br>
+  				
+				Based on our challenges we improve our process by pre-processing our audio data to have consistent frequency and bit rates.  Training with this allowed us to use a more efficient python library (sciPy as opposed to Librosa) and quickly process our data through the neural network.<br><br>
+				</font>
+			</td>
+		</tr>
 		
-		<p>The networks use a combination of convolutional (filters) and ReLu (Rectifier Linear Units) esstintially activation functions to alter the dimensionality and identifiy patterns in the data.</p>
 		
-		<div class="rightTextArea" align="middle">
-		<img src="images/wgan_probability_dist.png" width="378" height="282" alt=""/>
-	</div>
+		<tr>
+			<td colspan="2" align="center">
+				<font color = "white" font="arial" size="5">
+					Additional Post Processing <br><br>
+				</font>
+			</td>
+		</tr>
+
+		<tr valign="top">
+			<tr valign="top">
+			<td width="50%">
+				<img src="images/real_waveform.png"  width="500" height="300" border="3" alt=""/>
+			</td>
+			<td width="50%">
+				<img src="images/generated_waveform.png"  width="500" height="300" border="3" alt=""/>
+			</td>
+		<tr valign="top">
+			<td colspan="2" valign="top">
+				<font color = "white" font="arial" size="3">
+				Our audio analysis showed us a very "digital" output, that is our wave forms resembled step functions. To mitigate this, we conducted post processing on our generated audio using a low pass filter algorithm that attenuates our wave forms against high changes in frequency and pitch. We additional applied a moving average filter which conducts further attenuation to help remove some of the reverberation in the audio which we generate.<br><br>
+  				</font>
+			</td>
+		</tr>
 		
-		<p>The particular implementation is a WGAN (or Wasserstein GAN); with the WGAN, instead of the discriminator producing a classification, it produces a "distribution" of what a particular sample may look like.  So in our case, we have a distribution for "real" data as well as a distribution for "fake" data.  The aspect of the WGAN takes these two distributions and computes the Wasserstein distance between the two in order to determine if a sample is real or fake (which distribution does it fall into).  In this implementation, the Discriminator and Generator are part of a two player mini-max game.  The discriminator attempts to minimize the loss function (fake - real), whereas the generator attempts to maximize the loss function (for the fake results) thereby attempting to generate data which will “fool” the discriminator.</p>
-	</div>
-	
-<div>
-	
-			 <section class="approach" id="wavegan">
-    <h2 class="approach_header">Convolution </h2>
-		 <div class="LeftTextArea" align="left">
-			 
-		<p>Convolution within a neural network can be simplisticly seen as the application of a filter to the data, in order to generalize and extract features.</p>
-		<p>This implementation uses two types of convolution: downsampling in our discriminators to filter and reduce dimensionality; and upsampling in our generator where we increase the dimensionality of our features to generate a sound sample.</p>
-			
-			 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px"><img src="images/convolution_example.png" width="500" height="362" alt=""/></div>
-			<p> 
-			In upsampling, consider the diagram, with each audio sample we actually increasing the dimensionality of the feature space and “filling in” with the data filtered content.  The NN layers also conduct a “phase shuffle” which also helps introduce an element of periodicty in the data.</p>
-			 
-			 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px"><img src="images/wavegan_convolution_audio.jpg" width="515" height="179" alt=""/></div>
-			 
-			 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px">
-				 <img src="images/phase_shuffle.png" width="400" height="400" alt=""/></div>
-			 
-  		<p>These notions of convolution are same in principal but slightly different in implementation than some image recognition applications in which dimensionality is actually reduced.  This upsampling can actually create periodic patterns in our data, which is actually more remniscent of true audio harmonics.</p>
-	     
-	</div>
-  </section>
-
-
-	<div>
-		<section class="approach" id="wavegan">
-    <h2 class="approach_header">Loss Analysis </h2>
 		
-		<div style="display:block; vertical-align:middle; text-align:center; margin: 20px"> <img src="images/kick_1_1_D_loss.png" width="775" height="250" alt=""/></div>
-	 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px">  <img src="images/kick_1_1_G_loss.png" width="775" height="250" alt=""/> </div>
-			<div class="LeftTextArea" align="left">
-<p>In some of our initial training runs, in this case with Kick Drums, we can compare the loss between the discriminator and generator neural networks.  This was after about 600 or so training steps, which based on our batch size only computed to about 50 epochs through the training set of 770 sound files and took about 5 days; furthermore the results were slow and audio was not spectacular.</p>
+		<tr>
+			<td colspan="2" align="center">
+				<font color = "white" font="arial" size="5">
+					High Level Flow <br><br>
+				</font>
+			</td>
+		</tr>
 
-		<p>The discriminator loss is erratic but seems to stabilize eventually, but still quite a ways from zero, where we would ideally like it to be where it’s able to accurately predict between real and fake samples.</p>
-		<p>The generator loss is way off at the beginning but seems to stabilize closer to zero, it actually ends also at around -5, not too different from the discriminator, but not able to generate accurate sounds.</p>
-
-		</section>
-	</div>
-
-<div>
-	<section class="approach" id="wavegan">
-    <h2 class="approach_header">Training Challenges </h2>
-		<div class="LeftTextArea" align="left">
-		<p>We attempted to generate better samples by using larger batch sizes, using spliced audio samples to increase the size of our dataset which did not have significantly better audio generation.  What ultimately needed to happen was improving our algorithm efficiency to train faster.</p>
-  <p>Based on our challenges we improve our process by pre-processing our audio data to have consistent frequency and bit rates.  Training with this allowed us to use a more efficient python library and quickly process our data through the neural network.</p>
-  
-		</div>
+		<tr valign="top">
+			<td width="50%">
+					<img src="images/overall_process.jpg"  width="500" height="300" border="3" alt=""/>
+			</td>
+			<td width="50%" valign="top">
+				<font color = "white" font="arial" size="3">
+				We begin by taking our raw audio data perform frequency and bitrate conversion so they’re all consistent (44100Hz and 16bit rate) This is accumualted as our training data we use in our GAN.<br><br>
+				
+				After we train our GAN, we utilize the generative model to generate our new sounds for our application, but to improve quality, we run additional algorithms such as applying a low pass filter and wave form smooth (using moving average) to make our synthetic audio sound more natural.<br><br>
+  				</font>
+			</td>
+		</tr>
 		
-		 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px"><img src="images/kick_2_0_D_loss.png" width="775" height="250" alt=""/> </div>
-	 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px"> <img src="images/kick_2_0_G_loss.png" width="775" height="250" alt=""/> </div>
-	</section>
-	</div>
-	
-<div>
-	
-	<section class="approach" id="wavegan">
-    <h2 class="approach_header">Additional Post Processing </h2>
+		<tr>
+			<td colspan="2" align="center">
+				<font color = "white" font="arial" size="5">
+					Infrastructure Solution <br><br>
+				</font>
+			</td>
+		</tr>
 
-		<div style="display:block; vertical-align:middle; text-align:center; margin: 20px">  <img src="images/real_waveform.png" width="775" height="250" alt=""/> </div>
-	 <div style="display:block; vertical-align:middle; text-align:center; margin: 20px">   <img src="images/generated_waveform.png" width="775" height="250" alt=""/> </div>
-		<div class="LeftTextArea" align="left">
-<p>Our audio analysis showed us a very "digital" output, that is our wave forms resembled step functions.  To mitigate this, we conducted post processing on our generated audio using a low pass filter algorithm that attenuates our wave forms against high changes in frequency and pitch.  We additional applied a moving average filter which conducts further attenuation to help remove some of the reverberation in the audio which we generate.</p>
-		</div>
-	</section>
-</div>
+		<tr valign="top">
+			<td width="50%">
+					<img src="images/AstroDrum-AWS.png"  width="500" height="400" border="3" alt=""/>
+			</td>
+			<td width="50%" valign="top">
+				<font color = "white" font="arial" size="3">
+				In order to perform training on our neural network we utilized GPUs which we provisioned from AWS. Neural networks are computationally heavy to train with the need to repeatedly calculate the loss function and backpropagation of weights through the network being train, as a result GPUs are advantageous for their high capacity for handling matrix calculations.<br><br>
+				
+				We utilized multiple AWS Elastic Cloud Compute (EC2) instances, one for each type of model training, The generative models were then stored on Elastic Block Storage (EBS) which could then be used by the an existing (or new) EC2 instance for our generative audio processing. These sounds are generated en-mass and stored on AWS S3 buckets for use by our application. Future development could have our generative models producing audio files on-demand, however, for efficiency and a cost effective solution, we opted to use S3 buckets as opposed to a constantly running EC2 instance.<br><br>
+  				</font>
+			</td>
+		</tr>
+		
+		
+		<tr>
+			<td colspan="2" align="center">
+				<font color = "white" font="arial" size="5">
+					References/Citations <br><br>
+				</font>
+			</td>
+		</tr>
 
-	<div>
-		<section class="approach" id="wavegan">
-    <h2 class="approach_header">High Level Flow </h2>
+		<tr valign="top">
+			<td colspan="2" valign="top">
+				<font color = "white" font="arial" size="3">
+				Adversarial Audio Synthesis<br>
+				Donahue, Chris and McAuley, Julian and Puckette, Miller<br>
+				ICLR 2019<br>
+				<a href="https://github.com/chrisdonahue/wavegan" style="color:white"> https://github.com/chrisdonahue/wavegan</a>
+  				</font>
+			</td>
+		</tr>
 
-		<div style="display:block; vertical-align:middle; text-align:center; margin: 20px"> 	  <img src="images/overall_process.jpg" width="536" height="274" alt=""/> </div>
-
-	<div class="LeftTextArea" align="left">
-		<p>We begin by taking our raw audio data perform frequency and bitrate conversion so they’re all consistent (44100Hz and 16bit rate)  This is accumualted as our training data we use in our GAN.</p>
-
-		<p>After we train our GAN, we utilize the generative model to generate our new sounds for our application, but to improve quality, we run additional algorithms such as applying a low pass filter and wave form smooth (using moving average) to make our synthetic audio sound more natural.</p>
-		</div>
-</section>
-	</div>
-	
-	<div>
-		<section class="approach" id="wavegan">
-    <h2 class="approach_header">References/Citations </h2>
-			<div class="LeftTextArea" align="left">
-		Adversarial Audio Synthesis<br>
-		Donahue, Chris and McAuley, Julian and Puckette, Miller<br>
-		ICLR 2019<br>
-		https://github.com/chrisdonahue/wavegan<br>
-			</div>
-		</section>
-	</div>
-</body>
-</html>
+	</table>
