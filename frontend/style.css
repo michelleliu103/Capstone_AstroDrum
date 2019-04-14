@@ -78,6 +78,7 @@ ul li:hover a {
 	margin-left: 100px;
 	letter-spacing: 4px;
 	padding: 0px;
+	font-size: 24px;
 }
 
 {box-sizing: border-box;}
@@ -159,7 +160,9 @@ h4{
 .home {
   color: #343144;
   background: #fff;
-  background-color: #2d2d2d;
+  background-color: transparent;
+	width: 40%;
+	margin: auto;
 }
 
 .beat {
@@ -171,10 +174,12 @@ h4{
 	text-align: center;
 	color: #FFFFFF;
 	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	font-weight: lighter;
 	text-transform: uppercase;
 	letter-spacing: 2px;
+	font-size: 16px;
+	width: 600px;
 }
 
 /* Control Bar Section */
@@ -247,7 +252,7 @@ button:hover{
     font-size: 16px;
     border: none;
     float: left;
-    margin: 0px;
+    margin-left: 10px;
 	font-family: arial, sans-serif;
 }
 
@@ -286,6 +291,7 @@ button:hover{
   padding: 0px;
   margin-left: 10px;
 	margin-top: 0px;
+
 }
 
 .name {
@@ -409,8 +415,9 @@ button:hover{
 
 .cell {
   font-size: 12px;
+	font-weight: bold;
   color: antiquewhite;
-  background: #2D2D2D;
+  background: transparent;
   width: 0px;
   height: 10px;
   min-width: 25px;
@@ -441,6 +448,36 @@ button:hover{
 
     font-family: Impact, Charcoal, sans-serif;
     font-size: 36px;
+}
+
+.push-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 3px;
+	float: right;
+}
+
+.push-button,.push-button:visited {
+    background-color: #745fb5;
+    background: linear-gradient(5deg,#745fb5,#9066b8);
+    color: #fff
+}
+
+.push-button:hover,.push-button:focus {
+    background: #4f3d85;
+    box-shadow: none;
+    color: #fff
+}
+
+.-dark.push-button,.-dark.push-button:visited {
+    background: #4f3d85;
+    color: #fff
+}
+
+.-dark.push-button:hover,.-dark.push-button:focus {
+    background: #3e3069;
+    color: #fff
 }
 
 h1 {
