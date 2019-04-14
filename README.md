@@ -10,7 +10,7 @@ Incorporate a backend machine learning concept using GANs to generate a potentia
 
 The overall process flow:
 * Obtain input training audio data (kick drum, snare drum, etc..) sounds.
-* Manually (batch) process audio data for consistent bitrate and frequency (16bit, 41000MHz)
+* Manually (batch) process audio data for consistent bitrate and frequency (16bit, 44.1MHz)
 * Import training data to training cluster (acquired AWS GPU's)
 * Train generative models using WaveGAN
 * Use generative model to generate new audio files
