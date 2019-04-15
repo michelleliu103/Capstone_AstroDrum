@@ -140,7 +140,7 @@ ul li:hover a {
 		<tr>
 			<td colspan="2">
 				<font color = "white" font="arial" size="3">
-					In order to supply our application with an infinite amount of sounds, we wanted to implement a means to generate synthetic percussion sounds which sounded as natural and unique as possible. <br><br>
+					In order to supply our application with an infinite amount of sounds, we wanted to implement a means to generate synthetic percussion sounds which sounded as natural and unique as possible.  GANs are fairly new to the realm of machine learning and comes with a unique set of technical challenges in training but allows us the flexibility of allowing us to build generative models without the use of labeled data, something we considered a benefit in working with audio data.<br><br>
 	   		</td>
 	   	</tr>
 	   	<tr>
@@ -360,10 +360,16 @@ ul li:hover a {
 				Neural networks are computationally heavy to train with the need to repeatedly calculate the loss function and backpropagation of weights through the network being train, as a result GPUs are advantageous for their high capacity for handling matrix calculations.  The GANs were developed utilizing TensorFlow libraries and were enabled to run on GPUs for faster processing during model training and model execution for our synthetic sound generation.  Therefore, in our implementation, provisioned resources from AWS to support our backend development.<br><br>
 				
 				We utilized multiple AWS Elastic Cloud Compute (EC2) instances, one for each type of model training, The generative models were then stored on Elastic Block Storage (EBS) which could then be used by the an existing (or new) EC2 instance for our generative audio processing. These sounds are generated en-mass and stored on AWS S3 buckets for use by our application. Future development could have our generative models producing audio files on-demand, however, for efficiency and a cost effective solution, we opted to use S3 buckets as opposed to a constantly running EC2 instance.<br><br>
-  				</font>
+
+				AWS Virtual Machine Specifications:<br>
+				<ul>
+					<li>AMI: AWS Deep Learning AMI version 21.0</li>
+					<li>EC2 instance: p2.xlarge</li>
+					<li>Single nVidia Tesla K80 GPU 12 GB RAM</li>
+				</ul>
+  			</font>
 			</td>
 		</tr>
-		
 		
 		<tr>
 			<td colspan="2" align="center">
