@@ -65,3 +65,6 @@ Additional code artificats for generating our synthetic sound files from our tra
 #### WaveGAN Code
 Wavegan research repository  and content (references within) which we utilized and experimented with in our GAN model learning and generation of synthetic audio files
 
+#### Miscellaneous
+![Capstone Final Presentation slides](https://docs.google.com/presentation/d/1XiuV6bp-HFEwX7IsmI3A5vtvhvs2YnXD-q7ebv3KHXg/edit?usp=sharing)
+
